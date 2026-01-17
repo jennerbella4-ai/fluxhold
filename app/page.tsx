@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import TradingViewTicker from "@/components/TradingViewTicker"
+import TradingViewTicker from "@/components/TradingViewTicker";
+import DataDrivenSection from "@/components/DataDrivenSection";
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 import {
   ArrowRightIcon,
@@ -94,32 +95,17 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <TradingViewTicker />
-      {/* Trust Bar */}
+
       {/* Client Logos Carousel */}
       <ClientLogoCarousel />
 
       {/* Key Metrics */}
-      <section className="py-20">
+      <section className="pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">100K+</div>
-              <div className="text-[#9BA3AF]">Demo Users</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">$0</div>
-              <div className="text-[#9BA3AF]">Real Money Risk</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">24/7</div>
-              <div className="text-[#9BA3AF]">Simulated Markets</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">99.9%</div>
-              <div className="text-[#9BA3AF]">Uptime</div>
-            </div>
-          </div>
+          {/* Data-Driven Investing Section - ADD THIS */}
+          <DataDrivenSection />
         </div>
       </section>
 
