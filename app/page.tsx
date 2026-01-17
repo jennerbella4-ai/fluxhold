@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import TradingViewTicker from "@/components/TradingViewTicker"
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
 import {
   ArrowRightIcon,
@@ -93,7 +94,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
+      <TradingViewTicker />
       {/* Trust Bar */}
       {/* Client Logos Carousel */}
       <ClientLogoCarousel />
