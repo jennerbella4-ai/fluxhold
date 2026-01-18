@@ -192,6 +192,7 @@ export default function Footer() {
             </div>
           </div>
 
+
           {/* Copyright */}
           <div className="mt-8 pt-6 border-t border-gray-800">
             <div className="flex flex-col md:flex-row justify-between items-center">

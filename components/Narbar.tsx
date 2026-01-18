@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react'  // Add React import
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { 
-  Bars3Icon, 
+import React, { useState, useEffect } from "react"; // Add React import
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  Bars3Icon,
   XMarkIcon,
   ArrowRightIcon,
   ChartBarIcon,
@@ -13,62 +13,98 @@ import {
   UserGroupIcon,
   BuildingOfficeIcon,
   HomeIcon,
-  UserCircleIcon
-} from '@heroicons/react/24/outline'
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Close mobile menu on route change
   useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
+    setIsOpen(false);
+  }, [pathname]);
 
   const services = [
-    { name: 'Portfolio Analytics', href: '/#analytics', icon: <ChartBarIcon className="w-4 h-4" /> },
-    { name: 'Risk Assessment', href: '/#risk', icon: <ShieldCheckIcon className="w-4 h-4" /> },
-    { name: 'AI Predictions', href: '/ai-investors#ai', icon: <SparklesIcon className="w-4 h-4" /> },
-    { name: 'Community Insights', href: '/#community', icon: <UserGroupIcon className="w-4 h-4" /> },
-  ]
+    {
+      name: "Portfolio Analytics",
+      href: "/#analytics",
+      icon: <ChartBarIcon className="w-4 h-4" />,
+    },
+    {
+      name: "Risk Assessment",
+      href: "/#risk",
+      icon: <ShieldCheckIcon className="w-4 h-4" />,
+    },
+    {
+      name: "AI Predictions",
+      href: "/ai-investors#ai",
+      icon: <SparklesIcon className="w-4 h-4" />,
+    },
+    {
+      name: "Community Insights",
+      href: "/#community",
+      icon: <UserGroupIcon className="w-4 h-4" />,
+    },
+  ];
 
   const navItems = [
-    { name: 'Home', href: '/', icon: <HomeIcon className="w-4 h-4" /> },
-    { name: 'AI for Investors', href: '/ai-investors', icon: <SparklesIcon className="w-4 h-4" /> },
-    { name: 'About Us', href: '/about-us', icon: <BuildingOfficeIcon className="w-4 h-4" /> },
-  ]
+    { name: "Home", href: "/", icon: <HomeIcon className="w-4 h-4" /> },
+    {
+      name: "AI for Investors",
+      href: "/ai-investors",
+      icon: <SparklesIcon className="w-4 h-4" />,
+    },
+    {
+      name: "About Us",
+      href: "/about-us",
+      icon: <BuildingOfficeIcon className="w-4 h-4" />,
+    },
+  ];
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-[#0B1C2D]/95 backdrop-blur-md border-b border-gray-800/50' 
-          : 'bg-[#0B1C2D]/90 backdrop-blur-sm'
-      }`}>
+      <nav
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-[#0B1C2D]/95 backdrop-blur-md border-b border-gray-800/50"
+            : "bg-[#0B1C2D]/90 backdrop-blur-sm"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
-            
             {/* Logo */}
             <div className="flex items-center space-x-3">
               <Link href="/" className="flex items-center space-x-3 group">
                 <div className="w-10 h-10 bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2] rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
-                  <SparklesIcon className="w-6 h-6 text-white" />
+                  <svg
+                    className="w-6 h-6 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                    />
+                  </svg>
                 </div>
                 <div>
                   <span className="text-2xl font-bold bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] bg-clip-text text-transparent">
                     FluxHold
                   </span>
-                  <p className="text-xs text-[#9BA3AF]">AI Investment Demo</p>
                 </div>
               </Link>
             </div>
@@ -76,12 +112,12 @@ export default function Navbar() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
               {/* Home Link - Highlighted if active */}
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className={`flex items-center space-x-1 transition-colors font-medium py-2 ${
-                  pathname === '/' 
-                    ? 'text-white border-b-2 border-[#0EF2C2]' 
-                    : 'text-[#9BA3AF] hover:text-white'
+                  pathname === "/"
+                    ? "text-white border-b-2 border-[#0EF2C2]"
+                    : "text-[#9BA3AF] hover:text-white"
                 }`}
               >
                 <span>Home</span>
@@ -91,13 +127,25 @@ export default function Navbar() {
               <div className="relative group">
                 <button className="flex items-center space-x-1 text-[#9BA3AF] hover:text-white transition-colors font-medium py-2">
                   <span>Services</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
                 <div className="absolute left-0 mt-2 w-64 bg-[#0B1C2D] border border-gray-800 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                   <div className="p-4">
-                    <div className="text-xs uppercase text-[#9BA3AF] tracking-wider mb-3">AI-Powered Features</div>
+                    <div className="text-xs uppercase text-[#9BA3AF] tracking-wider mb-3">
+                      AI-Powered Features
+                    </div>
                     {services.map((service) => (
                       <Link
                         key={service.name}
@@ -111,7 +159,9 @@ export default function Navbar() {
                           <div className="font-medium text-white group-hover/item:text-[#0EF2C2] transition-colors">
                             {service.name}
                           </div>
-                          <div className="text-xs text-[#9BA3AF] mt-1">AI Demo Feature</div>
+                          <div className="text-xs text-[#9BA3AF] mt-1">
+                            AI Demo Feature
+                          </div>
                         </div>
                       </Link>
                     ))}
@@ -121,13 +171,13 @@ export default function Navbar() {
 
               {/* Navigation Items */}
               {navItems.slice(1).map((item) => (
-                <Link 
+                <Link
                   key={item.name}
-                  href={item.href} 
+                  href={item.href}
                   className={`transition-colors font-medium ${
-                    pathname === item.href 
-                      ? 'text-white border-b-2 border-[#0EF2C2]' 
-                      : 'text-[#9BA3AF] hover:text-white'
+                    pathname === item.href
+                      ? "text-white border-b-2 border-[#0EF2C2]"
+                      : "text-[#9BA3AF] hover:text-white"
                   }`}
                 >
                   {item.name}
@@ -136,15 +186,15 @@ export default function Navbar() {
 
               {/* Auth Links */}
               <div className="flex items-center space-x-4 ml-4">
-                <Link 
-                  href="/login" 
+                <Link
+                  href="/login"
                   className="text-[#9BA3AF] hover:text-white transition-colors font-medium flex items-center space-x-2 group"
                 >
                   <UserCircleIcon className="w-5 h-5" />
                   <span>Sign In</span>
                 </Link>
-                <Link 
-                  href="/register" 
+                <Link
+                  href="/register"
                   className="bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] text-[#0B1C2D] font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity flex items-center space-x-2 group"
                 >
                   <span>Get Started</span>
@@ -169,16 +219,18 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`
+      <div
+        className={`
         fixed inset-0 z-40 lg:hidden transform transition-all duration-300 ease-in-out
-        ${isOpen ? 'translate-x-0' : 'translate-x-full'}
-      `}>
+        ${isOpen ? "translate-x-0" : "translate-x-full"}
+      `}
+      >
         {/* Backdrop */}
-        <div 
+        <div
           className="absolute inset-0 bg-black/50 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         />
-        
+
         {/* Menu Panel */}
         <div className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-[#0B1C2D] border-l border-gray-800 overflow-y-auto">
           <div className="p-6">
@@ -212,32 +264,44 @@ export default function Navbar() {
                   href={item.href}
                   className={`flex items-center space-x-3 p-4 rounded-lg transition-colors ${
                     pathname === item.href
-                      ? 'bg-gradient-to-r from-[#4C6FFF]/20 to-[#0EF2C2]/10 border border-[#0EF2C2]/30'
-                      : 'bg-gray-900/50 hover:bg-gray-800/50'
+                      ? "bg-gradient-to-r from-[#4C6FFF]/20 to-[#0EF2C2]/10 border border-[#0EF2C2]/30"
+                      : "bg-gray-900/50 hover:bg-gray-800/50"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                    pathname === item.href
-                      ? 'bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2]'
-                      : 'bg-gradient-to-br from-[#4C6FFF]/20 to-[#0EF2C2]/10'
-                  }`}>
+                  <div
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                      pathname === item.href
+                        ? "bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2]"
+                        : "bg-gradient-to-br from-[#4C6FFF]/20 to-[#0EF2C2]/10"
+                    }`}
+                  >
                     {React.cloneElement(item.icon, {
-                      className: `w-5 h-5 ${pathname === item.href ? 'text-white' : 'text-[#0EF2C2]'}`
+                      className: `w-5 h-5 ${
+                        pathname === item.href ? "text-white" : "text-[#0EF2C2]"
+                      }`,
                     })}
                   </div>
                   <div className="flex-1">
-                    <div className={`font-medium ${pathname === item.href ? 'text-white' : 'text-white'}`}>
+                    <div
+                      className={`font-medium ${
+                        pathname === item.href ? "text-white" : "text-white"
+                      }`}
+                    >
                       {item.name}
                     </div>
-                    {item.name === 'Home' && (
+                    {item.name === "Home" && (
                       <div className="text-sm text-[#9BA3AF]">Landing page</div>
                     )}
-                    {item.name === 'AI for Investors' && (
-                      <div className="text-sm text-[#9BA3AF]">Smart portfolio insights</div>
+                    {item.name === "AI for Investors" && (
+                      <div className="text-sm text-[#9BA3AF]">
+                        Smart portfolio insights
+                      </div>
                     )}
-                    {item.name === 'About Us' && (
-                      <div className="text-sm text-[#9BA3AF]">Our story & mission</div>
+                    {item.name === "About Us" && (
+                      <div className="text-sm text-[#9BA3AF]">
+                        Our story & mission
+                      </div>
                     )}
                   </div>
                   {pathname === item.href && (
@@ -248,7 +312,9 @@ export default function Navbar() {
 
               {/* Services Section */}
               <div className="pt-4">
-                <div className="text-xs uppercase text-[#9BA3AF] tracking-wider mb-4 px-4">AI Services</div>
+                <div className="text-xs uppercase text-[#9BA3AF] tracking-wider mb-4 px-4">
+                  AI Services
+                </div>
                 <div className="space-y-2">
                   {services.map((service) => (
                     <Link
@@ -261,8 +327,12 @@ export default function Navbar() {
                         {service.icon}
                       </div>
                       <div>
-                        <div className="font-medium text-white">{service.name}</div>
-                        <div className="text-sm text-[#9BA3AF]">AI Demo Feature</div>
+                        <div className="font-medium text-white">
+                          {service.name}
+                        </div>
+                        <div className="text-sm text-[#9BA3AF]">
+                          AI Demo Feature
+                        </div>
                       </div>
                     </Link>
                   ))}
@@ -292,7 +362,8 @@ export default function Navbar() {
               <div className="pt-4 border-t border-gray-800">
                 <div className="p-4 bg-red-900/20 border border-red-800/30 rounded-lg">
                   <div className="text-xs text-red-300">
-                    <strong>Demo Platform:</strong> No real investments. Practice only.
+                    <strong>Demo Platform:</strong> No real investments.
+                    Practice only.
                   </div>
                 </div>
               </div>
@@ -304,5 +375,5 @@ export default function Navbar() {
       {/* Add padding to account for fixed navbar */}
       <div className="h-20"></div>
     </>
-  )
+  );
 }
