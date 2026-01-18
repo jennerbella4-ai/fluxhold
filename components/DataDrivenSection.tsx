@@ -214,7 +214,7 @@ export default function DataDrivenSection() {
         <div className="section_space mt-20">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="features_block bg-[#0B1C2D] border border-gray-800 rounded-2xl p-8 hover:border-[#4C6FFF]/30 transition-all duration-300 hover:scale-[1.02] group">
+            <div className="features_block bg-[#0B1C2D] border-2 border-gray-800 rounded-2xl p-8 hover:border-[#4C6FFF]/30 transition-all duration-300 hover:scale-[1.02] group">
               <div className="features_icon mb-6">
                 <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#4C6FFF] to-blue-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -233,7 +233,7 @@ export default function DataDrivenSection() {
             </div>
 
             {/* Feature 2 */}
-            <div className="features_block bg-[#0B1C2D] border border-gray-800 rounded-2xl p-8 hover:border-[#0EF2C2]/30 transition-all duration-300 hover:scale-[1.02] group">
+            <div className="features_block bg-[#0B1C2D] border-2 border-gray-800 rounded-2xl p-8 hover:border-[#0EF2C2]/30 transition-all duration-300 hover:scale-[1.02] group">
               <div className="features_icon mb-6">
                 <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#0EF2C2] to-emerald-400 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -252,7 +252,7 @@ export default function DataDrivenSection() {
             </div>
 
             {/* Feature 3 */}
-            <div className="features_block bg-[#0B1C2D] border border-gray-800 rounded-2xl p-8 hover:border-[#4C6FFF]/30 transition-all duration-300 hover:scale-[1.02] group">
+            <div className="features_block bg-[#0B1C2D] border-2 border-gray-800 rounded-2xl p-8 hover:border-[#4C6FFF]/30 transition-all duration-300 hover:scale-[1.02] group">
               <div className="features_icon mb-6">
                 <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-[#4C6FFF] flex items-center justify-center group-hover:scale-110 transition-transform">
                   <ChartBarIcon className="w-8 h-8 text-white" />

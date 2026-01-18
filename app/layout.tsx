@@ -6,9 +6,9 @@ import SupportChatWrapper from '@/components/SupportChatWrapper'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'FluxHold - Demo Investment Dashboard',
-  description: 'A demo investment analytics platform for portfolio purposes. Not real financial advice.',
-  keywords: ['investment', 'dashboard', 'demo', 'analytics', 'portfolio'],
+  title: 'FluxHold - AI Investment Demo Platform',
+  description: 'Experience AI-powered investment analytics in a risk-free demo environment. No real money involved.',
+  keywords: ['AI investing', 'demo platform', 'portfolio simulation', 'investment analytics', 'fintech demo'],
 }
 
 export default function RootLayout({
@@ -18,9 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-50`}>
+      <body className={`${inter.className} bg-[#060B14] text-white`}>
         {children}
-        {/* SupportChat is wrapped to avoid importing client component directly in server component */}
         <SupportChatWrapper />
       </body>
     </html>

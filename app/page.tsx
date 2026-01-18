@@ -3,6 +3,8 @@ import Image from "next/image";
 import TradingViewTicker from "@/components/TradingViewTicker";
 import DataDrivenSection from "@/components/DataDrivenSection";
 import ClientLogoCarousel from "@/components/ClientLogoCarousel";
+import Navbar from "@/components/Narbar";
+import Footer from "@/components/Footer";
 import {
   ArrowRightIcon,
   ShieldCheckIcon,
@@ -20,37 +22,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#060B14] text-white">
       {/* Navigation */}
-      <nav className="border-b border-gray-800 bg-[#0B1C2D]/90 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-20 items-center">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2] rounded-xl flex items-center justify-center">
-                <TrendingUpIcon className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] bg-clip-text text-transparent">
-                  FluxHold
-                </span>
-                <p className="text-xs text-[#9BA3AF]">Demo Platform</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-6">
-              <Link
-                href="/login"
-                className="text-[#9BA3AF] hover:text-white transition-colors font-medium"
-              >
-                Sign In
-              </Link>
-              <Link
-                href="/register"
-                className="bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] text-[#0B1C2D] font-semibold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity"
-              >
-                Start Free Demo
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
@@ -60,22 +32,17 @@ export default function Home() {
             <div className="inline-flex items-center space-x-2 bg-[#0B1C2D] border border-gray-800 rounded-full px-4 py-2 mb-8">
               <SparklesIcon className="w-4 h-4 text-[#0EF2C2]" />
               <span className="text-sm text-[#0EF2C2]">
-                Demo Investment Platform
+                Best Investment Platform
               </span>
             </div>
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="block">Smarter Market</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               <span className="block bg-gradient-to-r from-[#4C6FFF] via-white to-[#0EF2C2] bg-clip-text text-transparent">
-                Insights.
+                Invest Smarter.
               </span>
-              <span className="block">Clearer Decisions.</span>
+              <span className="block">Move Faster.</span>
             </h1>
             <p className="text-xl text-[#9BA3AF] max-w-3xl mx-auto mb-10">
-              FluxHold is a sophisticated demo platform for portfolio simulation
-              and investment analytics.
-              <span className="block mt-2 text-lg">
-                Practice with simulated markets—no real money involved.
-              </span>
+              Diversified Investing | Leading Yields | Millions Trust Us
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -311,63 +278,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Important Disclaimer */}
-      <section className="py-12 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-red-900/20 to-transparent border border-red-800/30 rounded-2xl p-8">
-            <div className="flex items-start">
-              <div className="flex-shrink-0">
-                <ShieldCheckIcon className="w-8 h-8 text-red-400" />
-              </div>
-              <div className="ml-6">
-                <h3 className="text-xl font-bold text-red-300 mb-3">
-                  Important Disclaimer
-                </h3>
-                <div className="text-red-200/80">
-                  <p className="mb-3">
-                    <strong>
-                      FluxHold is a demonstration application for portfolio
-                      purposes only.
-                    </strong>
-                  </p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>
-                      All data shown is simulated and does not represent real
-                      investments
-                    </li>
-                    <li>
-                      No real money is handled or stored in this application
-                    </li>
-                    <li>This platform does not provide financial advice</li>
-                    <li>
-                      Deposit and withdrawal features are for demonstration only
-                    </li>
-                    <li>Do not enter real financial information</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
-      <footer className="py-8 border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2] rounded-lg flex items-center justify-center">
-                <TrendingUpIcon className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold">FluxHold</span>
-            </div>
-            <div className="text-[#9BA3AF] text-sm">
-              © {new Date().getFullYear()} FluxHold Demo Platform. For portfolio
-              purposes only.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
