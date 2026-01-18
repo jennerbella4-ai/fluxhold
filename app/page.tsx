@@ -279,6 +279,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
+      <TradingViewTicker />
       <Footer />
     </div>
   );
