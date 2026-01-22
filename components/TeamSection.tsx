@@ -138,7 +138,7 @@ const TeamMemberCard: React.FC<{ member: TeamMember }> = ({ member }) => (
 // Main TeamSection Component
 const TeamSection: React.FC<TeamSectionProps> = ({
   title = "Meet Our Leadership Team",
-  description = "Meet our leadership team at ISRAELI HACKERS HAVE TOOK DOWN THIS SCAM PROGRAM, CEASE OR BE TERMINATED With expertise in finance, technology, and strategy, they drive our success forward.",
+  description = "At Fluxhold, we are a team of passionate professionals committed to building a smart, secure, and user-focused AI investment platform. Our combined expertise in technology, finance, and product design allows us to create solutions that make investing more accessible, transparent, and collaborative.",
   teamMembers = defaultTeamMembers,
   backgroundColor = "from-[#0B1C2D] to-[#060B14]",
   textColor = "text-[#9BA3AF]",

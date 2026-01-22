@@ -20,6 +20,8 @@ import {
 import ExactTradingViewWidgets from "@/components/ExactTradingViewWidgets";
 import FAQSection from "@/components/FAQSection";
 import TeamSection from "@/components/TeamSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import SafetyFeatures from "@/components/SafetyFeatures";
 
 export default function Home() {
   return (
@@ -216,62 +218,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">What Developers Say</h2>
-            <p className="text-xl text-[#9BA3AF] max-w-3xl mx-auto">
-              See how FluxHold helps developers build better investment
-              applications
-            </p>
-          </div>
+      <SafetyFeatures />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Alex Chen",
-                role: "Full Stack Developer",
-                quote:
-                  "Perfect for testing portfolio visualization features without real financial data.",
-                initials: "AC",
-              },
-              {
-                name: "Maria Rodriguez",
-                role: "FinTech Engineer",
-                quote:
-                  "The demo dashboard saved us weeks of development time for our investment app prototype.",
-                initials: "MR",
-              },
-              {
-                name: "James Kim",
-                role: "Product Manager",
-                quote:
-                  "Excellent tool for demonstrating investment concepts to stakeholders and clients.",
-                initials: "JK",
-              },
-            ].map((testimonial, idx) => (
-              <div
-                key={idx}
-                className="bg-[#0B1C2D] border border-gray-800 rounded-2xl p-8"
-              >
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2] flex items-center justify-center text-[#0B1C2D] font-bold">
-                    {testimonial.initials}
-                  </div>
-                  <div className="ml-4">
-                    <div className="font-bold">{testimonial.name}</div>
-                    <div className="text-sm text-[#9BA3AF]">
-                      {testimonial.role}
-                    </div>
-                  </div>
-                </div>
-                <p className="text-[#9BA3AF] italic">"{testimonial.quote}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Testimonials */}
+      <TestimonialsSection />
 
       {/* Final CTA */}
       <section className="py-20">
