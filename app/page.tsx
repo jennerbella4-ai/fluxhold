@@ -17,6 +17,7 @@ import {
   AcademicCapIcon,
   ServerIcon,
 } from "@/components/Icons";
+import ExactTradingViewWidgets from "@/components/ExactTradingViewWidgets";
 
 export default function Home() {
   return (
@@ -73,6 +74,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Data-Driven Investing Section - ADD THIS */}
           <DataDrivenSection />
+          <ExactTradingViewWidgets />
         </div>
       </section>
 
@@ -278,8 +280,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
       <TradingViewTicker />
+      {/* Footer */}
       <Footer />
     </div>
   );
