@@ -18,6 +18,8 @@ import {
   ServerIcon,
 } from "@/components/Icons";
 import ExactTradingViewWidgets from "@/components/ExactTradingViewWidgets";
+import FAQSection from "@/components/FAQSection";
+import TeamSection from "@/components/TeamSection";
 
 export default function Home() {
   return (
@@ -26,39 +28,55 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#4C6FFF]/10 to-[#0EF2C2]/5"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-32 relative">
-          <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-[#0B1C2D] border border-gray-800 rounded-full px-4 py-2 mb-8">
-              <SparklesIcon className="w-4 h-4 text-[#0EF2C2]" />
-              <span className="text-sm text-[#0EF2C2]">
-                Best Investment Platform
-              </span>
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#060B14] to-[#0B1C2D]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            {/* Left Column - Text Content */}
+            <div className="lg:w-1/2">
+              <div className="inline-flex items-center space-x-2 bg-[#0B1C2D] border border-gray-800 rounded-full px-4 py-2 mb-8">
+                <SparklesIcon className="w-4 h-4 text-[#0EF2C2]" />
+                <span className="text-sm text-[#0EF2C2]">
+                  Best Investment Platform
+                </span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <span className="block bg-gradient-to-r from-[#4C6FFF] via-white to-[#0EF2C2] bg-clip-text text-transparent">
+                  Invest Smarter.
+                </span>
+                <span className="block text-white">Move Faster.</span>
+              </h1>
+              <p className="text-xl text-[#9BA3AF] max-w-2xl mb-10">
+                Diversified Investing | Leading Yields | Millions Trust Us
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/register"
+                  className="group bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] text-[#0B1C2D] font-semibold py-4 px-8 rounded-lg hover:shadow-lg hover:shadow-[#4C6FFF]/25 transition-all duration-300 flex items-center justify-center space-x-2"
+                >
+                  <span>Start Free Demo</span>
+                  <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link
+                  href="/login"
+                  className="border border-gray-700 bg-[#0B1C2D]/50 text-white font-semibold py-4 px-8 rounded-lg hover:border-gray-600 transition-colors"
+                >
+                  Access Dashboard
+                </Link>
+              </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              <span className="block bg-gradient-to-r from-[#4C6FFF] via-white to-[#0EF2C2] bg-clip-text text-transparent">
-                Invest Smarter.
-              </span>
-              <span className="block">Move Faster.</span>
-            </h1>
-            <p className="text-xl text-[#9BA3AF] max-w-3xl mx-auto mb-10">
-              Diversified Investing | Leading Yields | Millions Trust Us
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/register"
-                className="group bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] text-[#0B1C2D] font-semibold py-4 px-8 rounded-lg hover:shadow-lg hover:shadow-[#4C6FFF]/25 transition-all duration-300 flex items-center justify-center space-x-2"
-              >
-                <span>Start Free Demo</span>
-                <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/login"
-                className="border border-gray-700 bg-[#0B1C2D]/50 text-white font-semibold py-4 px-8 rounded-lg hover:border-gray-600 transition-colors"
-              >
-                Access Dashboard
-              </Link>
+
+            {/* Right Column - Dashboard Image */}
+            <div className="lg:w-1/2">
+              <div className="relative overflow-hidden">
+                <Image
+                  src="/assets/images/clients/hero_image.png"
+                  alt="FluxHold Investment Dashboard Preview"
+                  width={800}
+                  height={400}
+                  className="w-full h-auto"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -280,7 +298,9 @@ export default function Home() {
         </div>
       </section>
 
-      <TradingViewTicker />
+      <TeamSection />
+
+      <FAQSection />
       {/* Footer */}
       <Footer />
     </div>
