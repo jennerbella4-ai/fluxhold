@@ -55,7 +55,7 @@ export default function Home() {
                   href="/register"
                   className="group bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] text-[#0B1C2D] font-semibold py-4 px-8 rounded-lg hover:shadow-lg hover:shadow-[#4C6FFF]/25 transition-all duration-300 flex items-center justify-center space-x-2"
                 >
-                  <span>Start Free Demo</span>
+                  <span>Start Free </span>
                   <ArrowRightIcon className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link

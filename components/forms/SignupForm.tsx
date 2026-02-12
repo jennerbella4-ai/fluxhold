@@ -227,7 +227,7 @@ export default function SignupForm() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-6 md:p-8 lg:p-12">
+    <div className="max-w-4xl mx-auto bg-white text-dark dark:bg-gray-900 rounded-2xl shadow-xl p-6 md:p-8 lg:p-12">
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">

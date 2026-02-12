@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowRight,
   Mail,
@@ -15,10 +14,11 @@ import {
   CheckCircle,
   Loader2,
   Shield,
-  Bitcoin,
   TrendingUp,
   Users,
   Sparkles,
+  BarChart3,
+  Coins,
 } from "lucide-react";
 
 export default function LoginPage() {
@@ -27,21 +27,41 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [rememberMe, setRememberMe] = useState(false);
 
-  // Check if user is already logged in
+  // Check if user is already logged in - only once on mount
   useEffect(() => {
+    let isMounted = true;
+
     const checkUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      if (user) {
-        router.push("/dashboard");
+      try {
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+        
+        if (isMounted) {
+          if (user) {
+            router.replace("/dashboard");
+          } else {
+            setIsChecking(false);
+          }
+        }
+      } catch (error) {
+        console.error("Auth check error:", error);
+        if (isMounted) {
+          setIsChecking(false);
+        }
       }
     };
+
     checkUser();
+
+    return () => {
+      isMounted = false;
+    };
   }, [router]);
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -51,12 +71,10 @@ export default function LoginPage() {
     setSuccess(null);
 
     try {
-      // Validate inputs
       if (!email || !password) {
         throw new Error("Please enter both email and password");
       }
 
-      // Attempt login
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
@@ -72,7 +90,6 @@ export default function LoginPage() {
       if (data.user) {
         setSuccess("Login successful! Redirecting...");
         
-        // Set session persistence if remember me is checked
         if (rememberMe) {
           await supabase.auth.setSession({
             access_token: data.session?.access_token || "",
@@ -80,15 +97,14 @@ export default function LoginPage() {
           });
         }
 
-        // Redirect to dashboard
+        // Use replace instead of push to prevent back button issues
         setTimeout(() => {
-          router.push("/dashboard");
+          router.replace("/dashboard");
         }, 1500);
       }
     } catch (error: any) {
       console.error("Login error:", error);
       setError(error.message || "Failed to login. Please try again.");
-    } finally {
       setIsLoading(false);
     }
   };
@@ -98,7 +114,6 @@ export default function LoginPage() {
     setError(null);
     
     try {
-      // Demo account credentials
       const demoEmail = "demo@fluxhold.com";
       const demoPassword = "demo123456";
       
@@ -108,86 +123,59 @@ export default function LoginPage() {
       });
 
       if (error) {
-        // If demo account doesn't exist, create it
         if (error.message === "Invalid login credentials") {
+          // Demo account doesn't exist - create it
           const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
             email: demoEmail,
             password: demoPassword,
             options: {
               data: {
                 full_name: "Demo User",
-                avatar_url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60",
               },
             },
           });
 
           if (signUpError) throw signUpError;
 
-          // Create profile for demo user
           if (signUpData.user) {
+            // Create profile
             await supabase.from("profiles").insert([
               {
                 id: signUpData.user.id,
                 full_name: "Demo User",
                 demo_balance: 100000.00,
-                created_at: new Date().toISOString(),
-                updated_at: new Date().toISOString(),
               },
             ]);
 
-            // Create some sample transactions
-            await supabase.from("transactions").insert([
-              {
-                user_id: signUpData.user.id,
-                type: "deposit",
-                amount: 50000,
-                description: "Initial Deposit",
-                status: "completed",
-                sender: "Bank Transfer",
-                created_at: new Date(Date.now() - 7 * 86400000).toISOString(),
-              },
-              {
-                user_id: signUpData.user.id,
-                type: "investment",
-                amount: -15000,
-                description: "Green Energy Solar Fund",
-                status: "completed",
-                created_at: new Date(Date.now() - 5 * 86400000).toISOString(),
-              },
-              {
-                user_id: signUpData.user.id,
-                type: "investment",
-                amount: -25000,
-                description: "AI Technology Fund",
-                status: "completed",
-                created_at: new Date(Date.now() - 3 * 86400000).toISOString(),
-              },
-              {
-                user_id: signUpData.user.id,
-                type: "deposit",
-                amount: 10000,
-                description: "BTC Deposit",
-                status: "pending",
-                metadata: { btc_amount: "0.25" },
-                created_at: new Date().toISOString(),
-              },
-            ]);
+            // Sign in after creating account
+            const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+              email: demoEmail,
+              password: demoPassword,
+            });
+
+            if (loginError) throw loginError;
+
+            if (loginData.user) {
+              setSuccess("Demo account created! Redirecting...");
+              setTimeout(() => {
+                router.replace("/dashboard");
+              }, 1500);
+            }
           }
         } else {
           throw error;
         }
+      } else {
+        // Demo account exists and login successful
+        setSuccess("Demo login successful! Redirecting...");
+        setTimeout(() => {
+          router.replace("/dashboard");
+        }, 1500);
       }
-
-      setSuccess("Demo login successful! Redirecting...");
-      
-      setTimeout(() => {
-        router.push("/dashboard");
-      }, 1500);
       
     } catch (error: any) {
       console.error("Demo login error:", error);
       setError("Failed to login with demo account. Please try again.");
-    } finally {
       setIsLoading(false);
     }
   };
@@ -210,63 +198,79 @@ export default function LoginPage() {
       if (error) throw error;
 
       setSuccess("Password reset link sent to your email!");
+      setIsLoading(false);
     } catch (error: any) {
       console.error("Forgot password error:", error);
       setError(error.message || "Failed to send reset link");
-    } finally {
       setIsLoading(false);
     }
   };
 
+  // Show loading state while checking auth
+  if (isChecking) {
+    return (
+      <div className="min-h-screen bg-[#0A0F1E] flex items-center justify-center">
+        <div className="text-center">
+          <div className="relative">
+            <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#4C6FFF]"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-2xl font-bold text-white">F</span>
+            </div>
+          </div>
+          <p className="mt-4 text-gray-400">Checking authentication...</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#0A0F1E] flex flex-col lg:flex-row">
-      {/* Left Side - Branding & Features */}
-      <div className="lg:flex-1 bg-gradient-to-br from-[#F7931A]/20 via-[#4C6FFF]/10 to-[#0EF2C2]/5 p-8 lg:p-12 flex flex-col relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#F7931A]/10 rounded-full blur-3xl"></div>
+      {/* Left Side - Fluxhold Branding */}
+      <div className="lg:flex-1 bg-gradient-to-br from-[#4C6FFF]/20 via-[#0EF2C2]/10 to-[#4C6FFF]/5 p-8 lg:p-12 flex flex-col relative overflow-hidden">
+        {/* Fluxhold Brand Pattern */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#4C6FFF]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#0EF2C2]/10 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#4C6FFF]/5 rounded-full blur-3xl"></div>
         
         {/* Content */}
         <div className="relative z-10 flex flex-col h-full">
-          {/* Logo */}
+          {/* Logo - Fluxhold Brand */}
           <div className="flex items-center space-x-3 mb-12">
-            <div className="w-10 h-10 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 rounded-xl flex items-center justify-center">
-              <Bitcoin className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] rounded-xl flex items-center justify-center">
+              <span className="text-white font-bold text-xl">F</span>
             </div>
             <span className="text-2xl font-bold text-white">Fluxhold</span>
           </div>
 
-          {/* Hero Content */}
+          {/* Hero Content - Fluxhold Messaging */}
           <div className="flex-1 flex flex-col justify-center max-w-lg">
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Invest Smarter with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80">
-                AI-Powered
-              </span>{" "}
-              Insights
+              Invest with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2]">
+                Confidence
+              </span>
             </h1>
             
             <p className="text-gray-400 text-lg mb-8">
-              Join thousands of investors who are growing their wealth with Fluxhold's 
-              advanced investment platform and real-time market analytics.
+              Join Fluxhold's next-generation investment platform. Secure, transparent, 
+              and powered by advanced analytics.
             </p>
 
-            {/* Features Grid */}
+            {/* Features Grid - Fluxhold Colors */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
               <div className="flex items-start space-x-3">
-                <div className="p-2 bg-[#F7931A]/10 rounded-lg">
-                  <TrendingUp className="w-5 h-5 text-[#F7931A]" />
+                <div className="p-2 bg-[#4C6FFF]/10 rounded-lg">
+                  <BarChart3 className="w-5 h-5 text-[#4C6FFF]" />
                 </div>
                 <div>
-                  <h3 className="text-white font-medium text-sm">AI Predictions</h3>
-                  <p className="text-gray-500 text-xs">93% accuracy rate</p>
+                  <h3 className="text-white font-medium text-sm">Smart Analytics</h3>
+                  <p className="text-gray-500 text-xs">Real-time insights</p>
                 </div>
               </div>
               
               <div className="flex items-start space-x-3">
-                <div className="p-2 bg-[#4C6FFF]/10 rounded-lg">
-                  <Shield className="w-5 h-5 text-[#4C6FFF]" />
+                <div className="p-2 bg-[#0EF2C2]/10 rounded-lg">
+                  <Shield className="w-5 h-5 text-[#0EF2C2]" />
                 </div>
                 <div>
                   <h3 className="text-white font-medium text-sm">Bank-Grade Security</h3>
@@ -275,8 +279,8 @@ export default function LoginPage() {
               </div>
               
               <div className="flex items-start space-x-3">
-                <div className="p-2 bg-[#0EF2C2]/10 rounded-lg">
-                  <Users className="w-5 h-5 text-[#0EF2C2]" />
+                <div className="p-2 bg-[#4C6FFF]/10 rounded-lg">
+                  <Users className="w-5 h-5 text-[#4C6FFF]" />
                 </div>
                 <div>
                   <h3 className="text-white font-medium text-sm">Joint Investments</h3>
@@ -285,24 +289,24 @@ export default function LoginPage() {
               </div>
               
               <div className="flex items-start space-x-3">
-                <div className="p-2 bg-[#F7931A]/10 rounded-lg">
-                  <Sparkles className="w-5 h-5 text-[#F7931A]" />
+                <div className="p-2 bg-[#0EF2C2]/10 rounded-lg">
+                  <Coins className="w-5 h-5 text-[#0EF2C2]" />
                 </div>
                 <div>
-                  <h3 className="text-white font-medium text-sm">Real-time Analytics</h3>
-                  <p className="text-gray-500 text-xs">Live market data</p>
+                  <h3 className="text-white font-medium text-sm">Multi-Asset</h3>
+                  <p className="text-gray-500 text-xs">Stocks, crypto, real estate</p>
                 </div>
               </div>
             </div>
 
-            {/* Testimonial */}
-            <div className="bg-white/5 backdrop-blur-sm border border-gray-800 rounded-xl p-4 max-w-md">
+            {/* Testimonial - Fluxhold Style */}
+            <div className="bg-white/5 backdrop-blur-sm border border-[#4C6FFF]/20 rounded-xl p-4 max-w-md">
               <div className="flex items-center space-x-3 mb-2">
                 <div className="flex -space-x-2">
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className="w-8 h-8 rounded-full border-2 border-[#0B1C2D] bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 flex items-center justify-center text-white text-xs font-bold"
+                      className="w-8 h-8 rounded-full border-2 border-[#0B1C2D] bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] flex items-center justify-center text-white text-xs font-bold"
                     >
                       {String.fromCharCode(64 + i)}
                     </div>
@@ -321,9 +325,9 @@ export default function LoginPage() {
                 </div>
               </div>
               <p className="text-sm text-gray-300">
-                "Fluxhold's AI insights helped me increase my portfolio returns by 32% in just 6 months. The joint investment feature is a game-changer."
+                "Fluxhold's platform made it easy to diversify my portfolio. The joint investment feature helped me access opportunities I couldn't do alone."
               </p>
-              <p className="text-xs text-gray-500 mt-2">— Sarah Chen, Verified Investor</p>
+              <p className="text-xs text-gray-500 mt-2">— Michael Rodriguez, Fluxhold Investor</p>
             </div>
           </div>
 
@@ -337,11 +341,16 @@ export default function LoginPage() {
       {/* Right Side - Login Form */}
       <div className="lg:flex-1 flex items-center justify-center p-8 lg:p-12">
         <div className="w-full max-w-md">
-          {/* Header */}
+          {/* Header - Fluxhold Brand */}
           <div className="text-center mb-8">
+            <div className="flex justify-center mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] rounded-2xl flex items-center justify-center">
+                <span className="text-white font-bold text-2xl">F</span>
+              </div>
+            </div>
             <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
             <p className="text-gray-400">
-              Sign in to access your investment dashboard
+              Sign in to your Fluxhold account
             </p>
           </div>
 
@@ -364,7 +373,7 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Login Form */}
+          {/* Login Form - Fluxhold Colors */}
           <form onSubmit={handleLogin} className="space-y-6">
             {/* Email Field */}
             <div>
@@ -380,7 +389,7 @@ export default function LoginPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#F7931A] focus:ring-1 focus:ring-[#F7931A] transition-colors"
+                  className="block w-full pl-10 pr-3 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#4C6FFF] focus:ring-1 focus:ring-[#4C6FFF] transition-colors"
                   placeholder="you@example.com"
                   required
                   disabled={isLoading}
@@ -402,7 +411,7 @@ export default function LoginPage() {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block w-full pl-10 pr-10 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#F7931A] focus:ring-1 focus:ring-[#F7931A] transition-colors"
+                  className="block w-full pl-10 pr-10 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#4C6FFF] focus:ring-1 focus:ring-[#4C6FFF] transition-colors"
                   placeholder="••••••••"
                   required
                   disabled={isLoading}
@@ -429,7 +438,7 @@ export default function LoginPage() {
                   type="checkbox"
                   checked={rememberMe}
                   onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-4 w-4 bg-[#0F2438] border-gray-800 rounded text-[#F7931A] focus:ring-[#F7931A] focus:ring-offset-0 focus:ring-1"
+                  className="h-4 w-4 bg-[#0F2438] border-gray-800 rounded text-[#4C6FFF] focus:ring-[#4C6FFF] focus:ring-offset-0 focus:ring-1"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-400">
                   Remember me
@@ -438,17 +447,17 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={handleForgotPassword}
-                className="text-sm text-[#F7931A] hover:text-[#F7931A]/80 transition-colors"
+                className="text-sm text-[#4C6FFF] hover:text-[#4C6FFF]/80 transition-colors"
               >
                 Forgot password?
               </button>
             </div>
 
-            {/* Login Button */}
+            {/* Login Button - Fluxhold Gradient */}
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 px-4 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full py-3 px-4 bg-gradient-to-r from-[#4C6FFF] to-[#0EF2C2] text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isLoading ? (
                 <>
@@ -464,7 +473,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          {/* Demo Login */}
+          {/* Demo Login - Fluxhold Style */}
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
@@ -478,32 +487,32 @@ export default function LoginPage() {
             <button
               onClick={handleDemoLogin}
               disabled={isLoading}
-              className="mt-6 w-full py-3 px-4 bg-[#0F2438] border border-gray-800 text-white font-medium rounded-xl hover:border-[#F7931A] hover:bg-[#0F2438]/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="mt-6 w-full py-3 px-4 bg-[#0F2438] border border-gray-800 text-white font-medium rounded-xl hover:border-[#4C6FFF] hover:bg-[#0F2438]/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center group"
             >
-              <Sparkles className="w-5 h-5 mr-2 text-[#F7931A]" />
+              <Sparkles className="w-5 h-5 mr-2 text-[#4C6FFF] group-hover:text-[#0EF2C2] transition-colors" />
               Try Demo Account
             </button>
           </div>
 
-          {/* Sign Up Link */}
+          {/* Sign Up Link - Fluxhold Colors */}
           <p className="mt-8 text-center text-sm text-gray-500">
             Don't have an account?{" "}
             <Link
-              href="/signup"
-              className="text-[#F7931A] hover:text-[#F7931A]/80 font-medium transition-colors"
+              href="/register"
+              className="text-[#4C6FFF] hover:text-[#0EF2C2] font-medium transition-colors"
             >
               Create free account
             </Link>
           </p>
 
-          {/* Security Note */}
-          <div className="mt-8 p-4 bg-[#0F2438]/50 rounded-xl border border-gray-800">
+          {/* Security Note - Fluxhold Colors */}
+          <div className="mt-8 p-4 bg-[#0F2438]/50 rounded-xl border border-[#4C6FFF]/20">
             <div className="flex items-start space-x-3">
               <Shield className="w-5 h-5 text-[#0EF2C2] flex-shrink-0 mt-0.5" />
               <div>
                 <p className="text-xs text-gray-400">
-                  <span className="text-white font-medium">Bank-grade security</span> — 
-                  All credentials are encrypted using 256-bit AES encryption. We never store your password in plain text.
+                  <span className="text-white font-medium">Fluxhold Secure</span> — 
+                  Bank-grade 256-bit encryption. Your data is protected with enterprise-level security.
                 </p>
               </div>
             </div>
@@ -516,9 +525,9 @@ export default function LoginPage() {
                 setEmail("demo@fluxhold.com");
                 setPassword("demo123456");
               }}
-              className="text-xs text-gray-600 hover:text-gray-500 transition-colors"
+              className="text-xs text-gray-600 hover:text-[#4C6FFF] transition-colors"
             >
-              ℹ️ Demo credentials: demo@fluxhold.com / demo123456
+              ℹ️ Demo: demo@fluxhold.com / demo123456
             </button>
           </div>
         </div>
