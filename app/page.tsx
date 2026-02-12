@@ -103,7 +103,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">
-              Why Choose FluxHold Demo?
+              Why Choose FluxHold?
             </h2>
             <p className="text-xl text-[#9BA3AF] max-w-3xl mx-auto">
               Experience professional investment tools in a completely risk-free
@@ -117,7 +117,7 @@ export default function Home() {
                 icon: <ChartBarIcon className="w-8 h-8" />,
                 title: "Real-time Analytics",
                 description:
-                  "Mock portfolio tracking with live demo data visualization",
+                  "Mock portfolio tracking with live data visualization",
                 color: "from-[#4C6FFF] to-blue-400",
               },
               {
@@ -177,7 +177,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Start in Minutes</h2>
             <p className="text-xl text-[#9BA3AF] max-w-3xl mx-auto">
-              Get started with our demo platform in three simple steps
+              Get started with our platform in three simple steps
             </p>
           </div>
 
@@ -185,13 +185,13 @@ export default function Home() {
             {[
               {
                 step: "01",
-                title: "Create Demo Account",
+                title: "Create Account",
                 desc: "Sign up with any email—no verification needed",
               },
               {
                 step: "02",
                 title: "Explore Dashboard",
-                desc: "Access simulated portfolio with $25,000 demo balance",
+                desc: "Access simulated portfolio with $200  balance",
               },
               {
                 step: "03",

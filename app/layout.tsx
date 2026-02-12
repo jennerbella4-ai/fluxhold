@@ -6,9 +6,9 @@ import SupportChatWrapper from '@/components/SupportChatWrapper'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'FluxHold - AI Investment Demo Platform',
-  description: 'Experience AI-powered investment analytics in a risk-free demo environment. No real money involved.',
-  keywords: ['AI investing', 'demo platform', 'portfolio simulation', 'investment analytics', 'fintech demo'],
+  title: 'FluxHold - AI Investment Platform',
+  description: 'Experience AI-powered investment analytics in a risk-free environment.',
+  keywords: ['AI investing', 'portfolio simulation', 'investment analytics',],
 }
 
 export default function RootLayout({
