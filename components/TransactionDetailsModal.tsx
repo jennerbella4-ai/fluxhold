@@ -5,10 +5,9 @@ import { Dialog, Transition } from '@headlessui/react'
 import { 
   X, Copy, CheckCircle, Clock, XCircle, RefreshCw,
   ArrowUpRight, ArrowDownRight, TrendingUp, Wallet,
-  ExternalLink, Bitcoin, Calendar, Hash, User, FileText
+  ExternalLink, Calendar, Hash, User, FileText
 } from 'lucide-react'
 import { useState } from 'react'
-import Link from 'next/link'
 
 interface Transaction {
   id: string
@@ -91,14 +90,14 @@ export default function TransactionDetailsModal({
     })
   }
 
-  const getBlockchainExplorerUrl = () => {
+  const getBlockchainExplorerUrl = (): string | undefined => {
     if (transaction.metadata?.wallet_address) {
       return `https://blockchain.info/address/${transaction.metadata.wallet_address}`
     }
     if (transaction.recipient?.startsWith('1') || transaction.recipient?.startsWith('3') || transaction.recipient?.startsWith('bc1')) {
       return `https://blockchain.info/address/${transaction.recipient}`
     }
-    return null
+    return undefined
   }
 
   return (
@@ -139,7 +138,7 @@ export default function TransactionDetailsModal({
                         {getTypeLabel()} Details
                       </Dialog.Title>
                       <p className="text-sm text-gray-400">
-                        Transaction #{transaction.id}
+                        Transaction #{transaction.id.slice(0, 8)}...{transaction.id.slice(-4)}
                       </p>
                     </div>
                   </div>
@@ -198,7 +197,7 @@ export default function TransactionDetailsModal({
 
                   <div className="bg-[#0F2438] p-4 rounded-xl border border-gray-800">
                     <p className="text-gray-400 text-sm mb-2">Description</p>
-                    <p className="text-white">{transaction.description}</p>
+                    <p className="text-white">{transaction.description || 'No description provided'}</p>
                   </div>
 
                   {(transaction.sender || transaction.recipient) && (
@@ -212,7 +211,7 @@ export default function TransactionDetailsModal({
                         </p>
                         <button
                           onClick={() => handleCopy(transaction.sender || transaction.recipient || '', 'address')}
-                          className="ml-2 p-2 hover:bg-gray-700 rounded-lg transition-colors"
+                          className="ml-2 p-2 hover:bg-gray-700 rounded-lg transition-colors flex-shrink-0"
                         >
                           {copied === 'address' ? (
                             <CheckCircle className="w-4 h-4 text-green-500" />
@@ -225,7 +224,7 @@ export default function TransactionDetailsModal({
                   )}
 
                   {/* Additional Metadata */}
-                  {transaction.metadata && (
+                  {transaction.metadata && Object.keys(transaction.metadata).length > 0 && (
                     <div className="bg-[#0F2438] p-4 rounded-xl border border-gray-800">
                       <p className="text-gray-400 text-sm mb-3">Additional Information</p>
                       <div className="space-y-2">

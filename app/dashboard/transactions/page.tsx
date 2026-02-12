@@ -106,6 +106,36 @@ export default function TransactionsPage() {
     setStats(newStats)
   }
 
+  // Helper function for pagination page numbers
+  const getPageNumbers = () => {
+    const pages = []
+    const maxVisible = 5
+    
+    if (totalPages <= maxVisible) {
+      // Show all pages
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i)
+      }
+    } else if (currentPage <= 3) {
+      // Near start
+      for (let i = 1; i <= maxVisible; i++) {
+        pages.push(i)
+      }
+    } else if (currentPage >= totalPages - 2) {
+      // Near end
+      for (let i = totalPages - 4; i <= totalPages; i++) {
+        pages.push(i)
+      }
+    } else {
+      // Middle
+      for (let i = currentPage - 2; i <= currentPage + 2; i++) {
+        pages.push(i)
+      }
+    }
+    
+    return pages
+  }
+
   // Realtime subscription
   useEffect(() => {
     if (!user?.id) return
@@ -794,32 +824,21 @@ export default function TransactionsPage() {
                     >
                       Previous
                     </button>
-                    {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                      let pageNum;
-                      if (totalPages <= 5) {
-                        pageNum = i + 1;
-                      } else if (currentPage <= 3) {
-                        pageNum = i + 1;
-                      } else if (currentPage >= totalPages - 2) {
-                        pageNum = totalPages - 4 + i;
-                      } else {
-                        pageNum = currentPage - 2 + i;
-                      }
-                      
-                      return (
-                        <button
-                          key={pageNum}
-                          onClick={() => handlePageChange(pageNum)}
-                          className={`px-3 py-1 rounded-lg transition-colors ${
-                            currentPage === pageNum
-                              ? 'bg-[#F7931A] text-white'
-                              : 'bg-[#0F2438] text-gray-400 hover:text-white'
-                          }`}
-                        >
-                          {pageNum}
-                        </button>
-                      );
-                    })}
+                    
+                    {getPageNumbers().map((pageNum) => (
+                      <button
+                        key={pageNum}
+                        onClick={() => handlePageChange(pageNum)}
+                        className={`px-3 py-1 rounded-lg transition-colors ${
+                          currentPage === pageNum
+                            ? 'bg-[#F7931A] text-white'
+                            : 'bg-[#0F2438] text-gray-400 hover:text-white'
+                        }`}
+                      >
+                        {pageNum}
+                      </button>
+                    ))}
+                    
                     <button
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
