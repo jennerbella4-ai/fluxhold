@@ -51,7 +51,7 @@ export default function DashboardLayout({
       <main className={`py-6 transition-all duration-300 ${
         sidebarOpen ? 'lg:pl-72' : 'lg:pl-20'
       }`}>
-        <div className="px-4 lg:px-8">
+        <div className="">
           {children}
         </div>
       </main>
