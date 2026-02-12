@@ -224,7 +224,7 @@ export default function Home() {
       <TestimonialsSection />
 
       {/* Final CTA */}
-      <section className="py-20">
+      {/* <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-[#0B1C2D] to-gray-900 border border-gray-800 rounded-3xl p-12 text-center relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#4C6FFF]/10 rounded-full -translate-y-32 translate-x-32"></div>
@@ -246,7 +246,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <TeamSection />
 
