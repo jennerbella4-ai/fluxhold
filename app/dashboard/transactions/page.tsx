@@ -454,14 +454,14 @@ export default function TransactionsPage() {
             <button
               onClick={handleRefresh}
               disabled={isFetching}
-              className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors disabled:opacity-50"
+              className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors disabled:opacity-50"
             >
               <RefreshCw className={`w-5 h-5 ${isFetching ? 'animate-spin' : ''}`} />
             </button>
             <button
               onClick={handleExportCSV}
               disabled={transactions.length === 0}
-              className="flex items-center space-x-2 px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors disabled:opacity-50"
+              className="flex items-center space-x-2 px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors disabled:opacity-50"
             >
               <Download className="w-4 h-4" />
               <span>Export CSV</span>
@@ -578,7 +578,7 @@ export default function TransactionsPage() {
             </div>
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="text-sm text-[#F7931A] hover:text-[#F7931A]/80"
+              className="text-sm text-[#4c6fff] hover:text-[#4c6fff]/80"
             >
               {showFilters ? 'Hide Filters' : 'Show Filters'}
             </button>
@@ -593,7 +593,7 @@ export default function TransactionsPage() {
                 placeholder="Search by ID, description, address..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#F7931A] transition-colors"
+                className="w-full pl-10 pr-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#4c6fff] transition-colors"
               />
             </div>
             
@@ -603,7 +603,7 @@ export default function TransactionsPage() {
                 onClick={() => setDateRange('all')}
                 className={`px-3 py-2 rounded-lg text-sm transition-colors ${
                   dateRange === 'all' 
-                    ? 'bg-[#F7931A] text-white' 
+                    ? 'bg-[#4c6fff] text-white' 
                     : 'bg-[#0F2438] text-gray-400 hover:text-white'
                 }`}
               >
@@ -613,7 +613,7 @@ export default function TransactionsPage() {
                 onClick={() => setDateRange('today')}
                 className={`px-3 py-2 rounded-lg text-sm transition-colors ${
                   dateRange === 'today' 
-                    ? 'bg-[#F7931A] text-white' 
+                    ? 'bg-[#4c6fff] text-white' 
                     : 'bg-[#0F2438] text-gray-400 hover:text-white'
                 }`}
               >
@@ -623,7 +623,7 @@ export default function TransactionsPage() {
                 onClick={() => setDateRange('week')}
                 className={`px-3 py-2 rounded-lg text-sm transition-colors ${
                   dateRange === 'week' 
-                    ? 'bg-[#F7931A] text-white' 
+                    ? 'bg-[#4c6fff] text-white' 
                     : 'bg-[#0F2438] text-gray-400 hover:text-white'
                 }`}
               >
@@ -633,7 +633,7 @@ export default function TransactionsPage() {
                 onClick={() => setDateRange('month')}
                 className={`px-3 py-2 rounded-lg text-sm transition-colors ${
                   dateRange === 'month' 
-                    ? 'bg-[#F7931A] text-white' 
+                    ? 'bg-[#4c6fff] text-white' 
                     : 'bg-[#0F2438] text-gray-400 hover:text-white'
                 }`}
               >
@@ -650,7 +650,7 @@ export default function TransactionsPage() {
                 <select
                   value={typeFilter}
                   onChange={(e) => setTypeFilter(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                 >
                   <option value="all">All Types</option>
                   <option value="deposit">Deposits</option>
@@ -665,7 +665,7 @@ export default function TransactionsPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                 >
                   <option value="all">All Statuses</option>
                   <option value="completed">Completed</option>
@@ -697,7 +697,7 @@ export default function TransactionsPage() {
         <div className="bg-[#0B1C2D] rounded-xl border border-gray-800 overflow-hidden">
           {isFetching ? (
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="w-8 h-8 text-[#F7931A] animate-spin" />
+              <Loader2 className="w-8 h-8 text-[#4c6fff] animate-spin" />
               <span className="ml-3 text-gray-400">Loading transactions...</span>
             </div>
           ) : (
@@ -758,7 +758,7 @@ export default function TransactionsPage() {
                           <td className="px-6 py-4">
                             <div className="text-sm text-white">{transaction.description || '-'}</div>
                             {transaction.metadata?.btc_amount && (
-                              <div className="text-xs text-[#F7931A] mt-1">
+                              <div className="text-xs text-[#4c6fff] mt-1">
                                 {transaction.metadata.btc_amount} BTC
                               </div>
                             )}
@@ -784,7 +784,7 @@ export default function TransactionsPage() {
                                 e.stopPropagation()
                                 handleViewTransaction(transaction)
                               }}
-                              className="text-sm text-[#F7931A] hover:text-[#F7931A]/80"
+                              className="text-sm text-[#4c6fff] hover:text-[#4c6fff]/80"
                             >
                               View Details
                             </button>
@@ -820,7 +820,7 @@ export default function TransactionsPage() {
                     <button
                       onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
-                      className="px-3 py-1 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      className="px-3 py-1 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       Previous
                     </button>
@@ -831,7 +831,7 @@ export default function TransactionsPage() {
                         onClick={() => handlePageChange(pageNum)}
                         className={`px-3 py-1 rounded-lg transition-colors ${
                           currentPage === pageNum
-                            ? 'bg-[#F7931A] text-white'
+                            ? 'bg-[#4c6fff] text-white'
                             : 'bg-[#0F2438] text-gray-400 hover:text-white'
                         }`}
                       >
@@ -842,7 +842,7 @@ export default function TransactionsPage() {
                     <button
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
-                      className="px-3 py-1 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      className="px-3 py-1 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       Next
                     </button>

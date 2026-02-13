@@ -474,7 +474,7 @@ export default function LoginPage() {
           </form>
 
           {/* Demo Login - Fluxhold Style */}
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-800"></div>
@@ -483,16 +483,7 @@ export default function LoginPage() {
                 <span className="px-2 bg-[#0A0F1E] text-gray-500">Or continue with</span>
               </div>
             </div>
-
-            <button
-              onClick={handleDemoLogin}
-              disabled={isLoading}
-              className="mt-6 w-full py-3 px-4 bg-[#0F2438] border border-gray-800 text-white font-medium rounded-xl hover:border-[#4C6FFF] hover:bg-[#0F2438]/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center group"
-            >
-              <Sparkles className="w-5 h-5 mr-2 text-[#4C6FFF] group-hover:text-[#0EF2C2] transition-colors" />
-              Try Demo Account
-            </button>
-          </div>
+          </div> */}
 
           {/* Sign Up Link - Fluxhold Colors */}
           <p className="mt-8 text-center text-sm text-gray-500">
@@ -519,7 +510,7 @@ export default function LoginPage() {
           </div>
 
           {/* Demo Credentials Hint */}
-          <div className="mt-4 text-center">
+          {/* <div className="mt-4 text-center">
             <button
               onClick={() => {
                 setEmail("demo@fluxhold.com");
@@ -529,7 +520,7 @@ export default function LoginPage() {
             >
               ℹ️ Demo: demo@fluxhold.com / demo123456
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
 

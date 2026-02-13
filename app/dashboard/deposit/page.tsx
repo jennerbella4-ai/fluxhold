@@ -357,7 +357,7 @@ export default function DepositPage() {
                 dismissError();
                 handlePaymentStarted();
               }}
-              className="mt-3 w-full py-2 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
+              className="mt-3 w-full py-2 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
             >
               Try Again
             </button>
@@ -372,12 +372,12 @@ export default function DepositPage() {
 
     return (
       <div className="fixed top-4 right-4 z-50 max-w-md w-full animate-slide-in">
-        <div className="bg-[#1A2C42] border border-[#F7931A]/30 rounded-xl shadow-2xl overflow-hidden">
-          <div className="bg-gradient-to-r from-[#F7931A]/20 to-transparent px-4 py-3 flex items-center justify-between border-b border-gray-800">
+        <div className="bg-[#1A2C42] border border-[#4c6fff]/30 rounded-xl shadow-2xl overflow-hidden">
+          <div className="bg-gradient-to-r from-[#4c6fff]/20 to-transparent px-4 py-3 flex items-center justify-between border-b border-gray-800">
             <div className="flex items-center space-x-2">
               <div className="relative">
-                <BellRing className="w-5 h-5 text-[#F7931A] animate-pulse" />
-                <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#F7931A] rounded-full"></span>
+                <BellRing className="w-5 h-5 text-[#4c6fff] animate-pulse" />
+                <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#4c6fff] rounded-full"></span>
               </div>
               <h4 className="text-white font-medium">Payment Pending</h4>
             </div>
@@ -393,7 +393,7 @@ export default function DepositPage() {
             <div className="flex items-start space-x-3">
               <div className="flex-shrink-0">
                 <div className="relative">
-                  <Loader2 className="w-8 h-8 text-[#F7931A] animate-spin" />
+                  <Loader2 className="w-8 h-8 text-[#4c6fff] animate-spin" />
                   <Bitcoin className="w-4 h-4 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                 </div>
               </div>
@@ -407,14 +407,14 @@ export default function DepositPage() {
                 </p>
                 <div className="flex items-center space-x-3 text-xs">
                   <span className="text-gray-500">Transaction:</span>
-                  <span className="text-[#F7931A] font-mono">
+                  <span className="text-[#4c6fff] font-mono">
                     {transactionId?.slice(0, 8)}...{transactionId?.slice(-4)}
                   </span>
                 </div>
                 <div className="mt-3 flex items-center space-x-2">
                   <div className="flex-1 bg-gray-800 rounded-full h-1.5">
                     <div
-                      className="bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 h-1.5 rounded-full animate-pulse"
+                      className="bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 h-1.5 rounded-full animate-pulse"
                       style={{ width: `${((1800 - timeLeft) / 1800) * 100}%` }}
                     ></div>
                   </div>
@@ -433,7 +433,7 @@ export default function DepositPage() {
             </div>
             <Link
               href={`/dashboard/transactions?id=${transactionId}`}
-              className="text-xs text-[#F7931A] hover:text-[#F7931A]/80 transition-colors flex items-center"
+              className="text-xs text-[#4c6fff] hover:text-[#4c6fff]/80 transition-colors flex items-center"
             >
               View Transaction
               <ExternalLink className="w-3 h-3 ml-1" />
@@ -486,7 +486,7 @@ export default function DepositPage() {
                     value={amount ? formatCurrency(amount) : ""}
                     onChange={handleAmountChange}
                     placeholder="0"
-                    className="w-full pl-8 pr-4 py-4 bg-[#0F2438] border border-gray-800 rounded-xl text-white text-3xl font-bold focus:outline-none focus:border-[#F7931A] transition-colors"
+                    className="w-full pl-8 pr-4 py-4 bg-[#0F2438] border border-gray-800 rounded-xl text-white text-3xl font-bold focus:outline-none focus:border-[#4c6fff] transition-colors"
                     autoFocus
                   />
                 </div>
@@ -517,7 +517,7 @@ export default function DepositPage() {
 
               <div className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-4">
                 <div className="flex items-start space-x-3">
-                  <Bitcoin className="w-5 h-5 text-[#F7931A] mt-0.5" />
+                  <Bitcoin className="w-5 h-5 text-[#4c6fff] mt-0.5" />
                   <div>
                     <h4 className="text-white font-medium">
                       Bitcoin (BTC) Deposit
@@ -534,7 +534,7 @@ export default function DepositPage() {
               <button
                 type="submit"
                 disabled={!isValidAmount}
-                className="w-full py-4 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Continue to Bitcoin Payment
               </button>
@@ -545,7 +545,7 @@ export default function DepositPage() {
                 <button
                   key={preset}
                   onClick={() => setAmount(preset.toString())}
-                  className="px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white hover:border-[#F7931A] transition-colors"
+                  className="px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white hover:border-[#4c6fff] transition-colors"
                 >
                   ${preset.toLocaleString()}
                 </button>
@@ -590,10 +590,10 @@ export default function DepositPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-[#F7931A]/10 to-[#F7931A]/5 rounded-2xl border border-gray-800 p-6">
+            <div className="bg-gradient-to-r from-[#4c6fff]/10 to-[#4c6fff]/5 rounded-2xl border border-gray-800 p-6">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="p-3 bg-[#F7931A]/20 rounded-full">
-                  <Bitcoin className="w-8 h-8 text-[#F7931A]" />
+                <div className="p-3 bg-[#4c6fff]/20 rounded-full">
+                  <Bitcoin className="w-8 h-8 text-[#4c6fff]" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">
@@ -618,7 +618,7 @@ export default function DepositPage() {
                       onClick={() =>
                         handleCopyAddress(BTC_WALLET_ADDRESS, "address")
                       }
-                      className="p-4 bg-[#F7931A]/10 hover:bg-[#F7931A]/20 text-[#F7931A] rounded-xl transition-colors"
+                      className="p-4 bg-[#4c6fff]/10 hover:bg-[#4c6fff]/20 text-[#4c6fff] rounded-xl transition-colors"
                     >
                       {copied === "address" ? (
                         <CheckCircle className="w-5 h-5" />
@@ -638,7 +638,7 @@ export default function DepositPage() {
                   </div>
                   <div className="bg-[#0F2438] p-4 rounded-xl border border-gray-800">
                     <div className="text-sm text-gray-400 mb-1">BTC Amount</div>
-                    <div className="text-xl font-bold text-[#F7931A]">
+                    <div className="text-xl font-bold text-[#4c6fff]">
                       {calculateBTCAmount(amount)} BTC
                     </div>
                   </div>
@@ -689,7 +689,7 @@ export default function DepositPage() {
             <button
               onClick={handlePaymentStarted}
               disabled={isProcessing || !isValidAmount}
-              className="w-full py-4 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
+              className="w-full py-4 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed relative overflow-hidden group"
             >
               {isProcessing ? (
                 <span className="flex items-center justify-center">
@@ -753,10 +753,10 @@ export default function DepositPage() {
                     <div className="relative">
                       <div className="w-20 h-20 rounded-full border-4 border-gray-700"></div>
                       <div
-                        className="absolute top-0 left-0 w-20 h-20 rounded-full border-4 border-t-[#F7931A] border-r-[#F7931A] border-b-transparent border-l-transparent animate-spin"
+                        className="absolute top-0 left-0 w-20 h-20 rounded-full border-4 border-t-[#4c6fff] border-r-[#4c6fff] border-b-transparent border-l-transparent animate-spin"
                         style={{ animationDuration: "3s" }}
                       ></div>
-                      <Bitcoin className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-[#F7931A]" />
+                      <Bitcoin className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-[#4c6fff]" />
                     </div>
                   </div>
 
@@ -771,14 +771,14 @@ export default function DepositPage() {
                   <div className="max-w-md mx-auto bg-[#0F2438] rounded-xl border border-gray-800 p-6 mb-6">
                     <div className="flex justify-between items-center mb-4">
                       <span className="text-gray-400">Time Remaining</span>
-                      <span className="text-2xl font-bold text-[#F7931A]">
+                      <span className="text-2xl font-bold text-[#4c6fff]">
                         {formatTime(timeLeft)}
                       </span>
                     </div>
 
                     <div className="w-full bg-gray-800 rounded-full h-2.5 mb-4">
                       <div
-                        className="bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 h-2.5 rounded-full transition-all duration-1000"
+                        className="bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 h-2.5 rounded-full transition-all duration-1000"
                         style={{
                           width: `${((1800 - timeLeft) / 1800) * 100}%`,
                         }}
@@ -794,7 +794,7 @@ export default function DepositPage() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-400">BTC Amount</span>
-                        <span className="text-[#F7931A] font-bold">
+                        <span className="text-[#4c6fff] font-bold">
                           {calculateBTCAmount(amount)} BTC
                         </span>
                       </div>
@@ -814,7 +814,7 @@ export default function DepositPage() {
 
                   <Link
                     href={`/dashboard/transactions?id=${transactionId}`}
-                    className="inline-flex items-center text-[#F7931A] hover:text-[#F7931A]/80 transition-colors"
+                    className="inline-flex items-center text-[#4c6fff] hover:text-[#4c6fff]/80 transition-colors"
                   >
                     View transaction details
                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -831,7 +831,7 @@ export default function DepositPage() {
                   <p className="text-gray-400 mb-6">
                     Your deposit has been verified with 6 network confirmations.
                   </p>
-                  <div className="animate-pulse text-[#F7931A]">
+                  <div className="animate-pulse text-[#4c6fff]">
                     Completing your deposit...
                   </div>
                 </div>
@@ -882,7 +882,7 @@ export default function DepositPage() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">BTC Amount</span>
-                  <span className="text-[#F7931A] font-bold">
+                  <span className="text-[#4c6fff] font-bold">
                     {calculateBTCAmount(amount)} BTC
                   </span>
                 </div>
@@ -911,13 +911,13 @@ export default function DepositPage() {
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center">
               <Link
                 href="/dashboard"
-                className="px-6 py-3 bg-[#0F2438] border border-gray-800 text-white rounded-xl hover:border-[#F7931A] transition-colors"
+                className="px-6 py-3 bg-[#0F2438] border border-gray-800 text-white rounded-xl hover:border-[#4c6fff] transition-colors"
               >
                 Return to Dashboard
               </Link>
               <Link
                 href={`/dashboard/transactions?id=${transactionId}`}
-                className="px-6 py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center"
+                className="px-6 py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center"
               >
                 <FileText className="w-4 h-4 mr-2" />
                 View Transaction Details
@@ -927,7 +927,7 @@ export default function DepositPage() {
             <div className="mt-4">
               <Link
                 href="/dashboard/transactions"
-                className="text-sm text-[#F7931A] hover:text-[#F7931A]/80 flex items-center justify-center"
+                className="text-sm text-[#4c6fff] hover:text-[#4c6fff]/80 flex items-center justify-center"
               >
                 View all transactions
                 <ArrowRight className="w-4 h-4 ml-1" />

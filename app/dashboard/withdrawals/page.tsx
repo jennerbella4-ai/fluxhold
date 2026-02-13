@@ -356,7 +356,7 @@ export default function WithdrawalsPage() {
                     value={amount ? formatCurrency(amount) : ''}
                     onChange={handleAmountChange}
                     placeholder="0"
-                    className="w-full pl-8 pr-4 py-4 bg-[#0F2438] border border-gray-800 rounded-xl text-white text-3xl font-bold focus:outline-none focus:border-[#F7931A] transition-colors"
+                    className="w-full pl-8 pr-4 py-4 bg-[#0F2438] border border-gray-800 rounded-xl text-white text-3xl font-bold focus:outline-none focus:border-[#4c6fff] transition-colors"
                     autoFocus
                   />
                 </div>
@@ -389,7 +389,7 @@ export default function WithdrawalsPage() {
                   value={btcAddress}
                   onChange={(e) => setBtcAddress(e.target.value)}
                   placeholder="1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
-                  className="w-full px-4 py-4 bg-[#0F2438] border border-gray-800 rounded-xl text-white font-mono text-sm focus:outline-none focus:border-[#F7931A] transition-colors"
+                  className="w-full px-4 py-4 bg-[#0F2438] border border-gray-800 rounded-xl text-white font-mono text-sm focus:outline-none focus:border-[#4c6fff] transition-colors"
                 />
                 <p className="mt-2 text-xs text-gray-500">
                   Enter your Bitcoin wallet address where you want to receive funds
@@ -405,7 +405,7 @@ export default function WithdrawalsPage() {
                       key={preset}
                       type="button"
                       onClick={() => setAmount(preset.toString())}
-                      className="px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white hover:border-[#F7931A] transition-colors"
+                      className="px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white hover:border-[#4c6fff] transition-colors"
                     >
                       ${preset.toLocaleString()}
                     </button>
@@ -415,7 +415,7 @@ export default function WithdrawalsPage() {
               {/* Fee Information */}
               <div className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-4">
                 <div className="flex items-start space-x-3">
-                  <Bitcoin className="w-5 h-5 text-[#F7931A] mt-0.5" />
+                  <Bitcoin className="w-5 h-5 text-[#4c6fff] mt-0.5" />
                   <div>
                     <h4 className="text-white font-medium">Withdrawal Details</h4>
                     <div className="mt-2 space-y-1">
@@ -439,7 +439,7 @@ export default function WithdrawalsPage() {
               <button
                 type="submit"
                 disabled={!isValidAmount || !btcAddress}
-                className="w-full py-4 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full py-4 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 Continue to Confirm
               </button>
@@ -477,9 +477,9 @@ export default function WithdrawalsPage() {
               </div>
             </div>
 
-            <div className="bg-gradient-to-r from-[#F7931A]/10 to-[#F7931A]/5 rounded-2xl border border-gray-800 p-6">
+            <div className="bg-gradient-to-r from-[#4c6fff]/10 to-[#4c6fff]/5 rounded-2xl border border-gray-800 p-6">
               <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-                <Bitcoin className="w-5 h-5 mr-2 text-[#F7931A]" />
+                <Bitcoin className="w-5 h-5 mr-2 text-[#4c6fff]" />
                 Confirm Withdrawal
               </h3>
               
@@ -491,7 +491,7 @@ export default function WithdrawalsPage() {
                 
                 <div className="flex justify-between items-center py-3 border-b border-gray-800">
                   <span className="text-gray-400">BTC Amount</span>
-                  <span className="text-[#F7931A] font-bold">{calculateBTCAmount(amount)} BTC</span>
+                  <span className="text-[#4c6fff] font-bold">{calculateBTCAmount(amount)} BTC</span>
                 </div>
                 
                 <div className="flex justify-between items-center py-3 border-b border-gray-800">
@@ -502,7 +502,7 @@ export default function WithdrawalsPage() {
                     </span>
                     <button
                       onClick={() => handleCopy(btcAddress, 'address')}
-                      className="text-[#F7931A] hover:text-[#F7931A]/80"
+                      className="text-[#4c6fff] hover:text-[#4c6fff]/80"
                     >
                       {copied === 'address' ? (
                         <CheckCircle className="w-4 h-4" />
@@ -525,7 +525,7 @@ export default function WithdrawalsPage() {
                 
                 <div className="flex justify-between items-center py-3">
                   <span className="text-gray-400">You'll Receive</span>
-                  <span className="text-2xl font-bold text-[#F7931A]">
+                  <span className="text-2xl font-bold text-[#4c6fff]">
                     {calculateBTCAmount(amount)} BTC
                   </span>
                 </div>
@@ -547,7 +547,7 @@ export default function WithdrawalsPage() {
             <button
               onClick={handleWithdrawal}
               disabled={isProcessing}
-              className="w-full py-4 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+              className="w-full py-4 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-bold rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
             >
               {isProcessing ? (
                 <span className="flex items-center justify-center">
@@ -571,10 +571,10 @@ export default function WithdrawalsPage() {
               <div className="relative">
                 <div className="w-20 h-20 rounded-full border-4 border-gray-700"></div>
                 <div 
-                  className="absolute top-0 left-0 w-20 h-20 rounded-full border-4 border-t-[#F7931A] border-r-[#F7931A] border-b-transparent border-l-transparent animate-spin"
+                  className="absolute top-0 left-0 w-20 h-20 rounded-full border-4 border-t-[#4c6fff] border-r-[#4c6fff] border-b-transparent border-l-transparent animate-spin"
                   style={{ animationDuration: '2s' }}
                 ></div>
-                <Bitcoin className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-[#F7931A]" />
+                <Bitcoin className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 text-[#4c6fff]" />
               </div>
             </div>
             
@@ -591,7 +591,7 @@ export default function WithdrawalsPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">BTC Amount</span>
-                  <span className="text-[#F7931A] font-bold">{calculateBTCAmount(amount)} BTC</span>
+                  <span className="text-[#4c6fff] font-bold">{calculateBTCAmount(amount)} BTC</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Destination</span>
@@ -632,7 +632,7 @@ export default function WithdrawalsPage() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">BTC Amount</span>
-                  <span className="text-[#F7931A] font-bold">{calculateBTCAmount(amount)} BTC</span>
+                  <span className="text-[#4c6fff] font-bold">{calculateBTCAmount(amount)} BTC</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-400">Destination</span>
@@ -649,7 +649,7 @@ export default function WithdrawalsPage() {
                 <div className="flex justify-between items-center pt-2 border-t border-gray-800">
                   <span className="text-gray-400">Estimated Completion</span>
                   <span className="text-white font-medium flex items-center">
-                    <Clock className="w-4 h-4 mr-1 text-[#F7931A]" />
+                    <Clock className="w-4 h-4 mr-1 text-[#4c6fff]" />
                     30-60 minutes
                   </span>
                 </div>
@@ -659,13 +659,13 @@ export default function WithdrawalsPage() {
             <div className="flex space-x-4 justify-center">
               <button
                 onClick={handleBack}
-                className="px-6 py-3 bg-[#0F2438] border border-gray-800 text-white rounded-xl hover:border-[#F7931A] transition-colors"
+                className="px-6 py-3 bg-[#0F2438] border border-gray-800 text-white rounded-xl hover:border-[#4c6fff] transition-colors"
               >
                 New Withdrawal
               </button>
               <Link
                 href="/dashboard"
-                className="px-6 py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white rounded-xl hover:opacity-90 transition-opacity"
+                className="px-6 py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white rounded-xl hover:opacity-90 transition-opacity"
               >
                 Return to Dashboard
               </Link>
@@ -708,12 +708,12 @@ export default function WithdrawalsPage() {
             <div className="bg-[#0B1C2D] rounded-2xl border border-gray-800 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-bold text-white flex items-center">
-                  <History className="w-5 h-5 mr-2 text-[#F7931A]" />
+                  <History className="w-5 h-5 mr-2 text-[#4c6fff]" />
                   Recent Withdrawals
                 </h3>
                 <Link 
                   href="/dashboard/transactions"
-                  className="text-sm text-[#F7931A] hover:text-[#F7931A]/80"
+                  className="text-sm text-[#4c6fff] hover:text-[#4c6fff]/80"
                 >
                   View All
                 </Link>
@@ -755,7 +755,7 @@ export default function WithdrawalsPage() {
             {/* Withdrawal Limits */}
             <div className="bg-[#0B1C2D] rounded-2xl border border-gray-800 p-6">
               <h3 className="text-lg font-bold text-white mb-4 flex items-center">
-                <Shield className="w-5 h-5 mr-2 text-[#F7931A]" />
+                <Shield className="w-5 h-5 mr-2 text-[#4c6fff]" />
                 Withdrawal Limits
               </h3>
               <div className="space-y-3">

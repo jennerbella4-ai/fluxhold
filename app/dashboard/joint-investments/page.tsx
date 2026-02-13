@@ -477,8 +477,8 @@ export default function JointInvestmentsPage() {
         <div className="bg-[#0B1C2D] rounded-2xl border border-gray-800 max-w-lg w-full max-h-[90vh] overflow-y-auto">
           <div className="p-6 border-b border-gray-800 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-[#F7931A]/10 rounded-lg">
-                <TrendingUp className="w-5 h-5 text-[#F7931A]" />
+              <div className="p-2 bg-[#4c6fff]/10 rounded-lg">
+                <TrendingUp className="w-5 h-5 text-[#4c6fff]" />
               </div>
               <h3 className="text-xl font-bold text-white">Join Investment</h3>
             </div>
@@ -492,7 +492,7 @@ export default function JointInvestmentsPage() {
               <form onSubmit={handleAmountSubmit} className="space-y-6">
                 <div className="bg-[#0F2438] rounded-xl p-4 border border-gray-800">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-lg bg-[#F7931A]/20 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-lg bg-[#4c6fff]/20 flex items-center justify-center">
                       <span className="text-xl">{investment.image ? "🌱" : "💰"}</span>
                     </div>
                     <div>
@@ -509,7 +509,7 @@ export default function JointInvestmentsPage() {
                   </div>
                   <div className="flex justify-between text-sm mb-4">
                     <span className="text-gray-400">Minimum Investment</span>
-                    <span className="text-[#F7931A] font-bold">{formatCurrency(investment.minInvestment)}</span>
+                    <span className="text-[#4c6fff] font-bold">{formatCurrency(investment.minInvestment)}</span>
                   </div>
                   
                   <label className="block text-sm font-medium text-gray-400 mb-2">
@@ -522,7 +522,7 @@ export default function JointInvestmentsPage() {
                       value={joinAmount ? formatJoinCurrency(joinAmount) : ""}
                       onChange={(e) => setJoinAmount(e.target.value)}
                       placeholder="0"
-                      className="w-full pl-8 pr-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white text-2xl font-bold focus:outline-none focus:border-[#F7931A] transition-colors"
+                      className="w-full pl-8 pr-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white text-2xl font-bold focus:outline-none focus:border-[#4c6fff] transition-colors"
                       autoFocus
                     />
                   </div>
@@ -549,7 +549,7 @@ export default function JointInvestmentsPage() {
                       type="button"
                       onClick={() => setJoinAmount(preset.toString())}
                       disabled={preset > userBalance}
-                      className="px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white text-sm hover:border-[#F7931A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white text-sm hover:border-[#4c6fff] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {formatCurrency(preset)}
                     </button>
@@ -559,7 +559,7 @@ export default function JointInvestmentsPage() {
                 <button
                   type="submit"
                   disabled={!isValidAmount}
-                  className="w-full py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Continue to Review
                 </button>
@@ -577,7 +577,7 @@ export default function JointInvestmentsPage() {
                   </div>
                   <div className="flex justify-between items-center mb-3">
                     <span className="text-gray-400">Shares</span>
-                    <span className="text-[#F7931A] font-bold">{(parseInt(joinAmount) / 1000).toFixed(2)}</span>
+                    <span className="text-[#4c6fff] font-bold">{(parseInt(joinAmount) / 1000).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-400">Expected ROI</span>
@@ -608,7 +608,7 @@ export default function JointInvestmentsPage() {
                   <button
                     onClick={handleConfirm}
                     disabled={isProcessing}
-                    className="flex-1 py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
+                    className="flex-1 py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
                     {isProcessing ? (
                       <span className="flex items-center justify-center">
@@ -658,8 +658,8 @@ export default function JointInvestmentsPage() {
         <div className="bg-[#0B1C2D] rounded-2xl border border-gray-800 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <div className="p-6 border-b border-gray-800 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="p-2 bg-[#F7931A]/10 rounded-lg">
-                <UserPlus className="w-5 h-5 text-[#F7931A]" />
+              <div className="p-2 bg-[#4c6fff]/10 rounded-lg">
+                <UserPlus className="w-5 h-5 text-[#4c6fff]" />
               </div>
               <h3 className="text-xl font-bold text-white">Create Joint Investment</h3>
             </div>
@@ -681,7 +681,7 @@ export default function JointInvestmentsPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="e.g., Green Energy Solar Farm"
-                      className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                      className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                       required
                     />
                   </div>
@@ -695,7 +695,7 @@ export default function JointInvestmentsPage() {
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                       placeholder="Describe your investment opportunity..."
                       rows={4}
-                      className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors resize-none"
+                      className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors resize-none"
                       required
                     />
                   </div>
@@ -708,7 +708,7 @@ export default function JointInvestmentsPage() {
                       <select
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                       >
                         <option>Real Estate</option>
                         <option>Renewable Energy</option>
@@ -726,7 +726,7 @@ export default function JointInvestmentsPage() {
                       <select
                         value={formData.risk}
                         onChange={(e) => setFormData({ ...formData, risk: e.target.value as any })}
-                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                       >
                         <option>Low</option>
                         <option>Medium</option>
@@ -746,7 +746,7 @@ export default function JointInvestmentsPage() {
                         onChange={(e) => setFormData({ ...formData, minInvestment: parseInt(e.target.value) })}
                         min="100"
                         step="100"
-                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                         required
                       />
                     </div>
@@ -761,7 +761,7 @@ export default function JointInvestmentsPage() {
                         onChange={(e) => setFormData({ ...formData, targetAmount: parseInt(e.target.value) })}
                         min="10000"
                         step="1000"
-                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                         required
                       />
                     </div>
@@ -778,7 +778,7 @@ export default function JointInvestmentsPage() {
                         onChange={(e) => setFormData({ ...formData, roi: parseInt(e.target.value) })}
                         min="1"
                         max="100"
-                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                         required
                       />
                     </div>
@@ -790,7 +790,7 @@ export default function JointInvestmentsPage() {
                       <select
                         value={formData.duration}
                         onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                        className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                       >
                         <option>12 months</option>
                         <option>24 months</option>
@@ -811,7 +811,7 @@ export default function JointInvestmentsPage() {
                       onChange={(e) => setFormData({ ...formData, maxParticipants: parseInt(e.target.value) })}
                       min="10"
                       max="1000"
-                      className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                      className="w-full px-4 py-3 bg-[#0F2438] border border-gray-800 rounded-xl text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                       required
                     />
                   </div>
@@ -881,7 +881,7 @@ export default function JointInvestmentsPage() {
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
+                      className="flex-1 py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity"
                     >
                       Create Investment
                     </button>
@@ -925,7 +925,7 @@ export default function JointInvestmentsPage() {
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setShowCreateModal(true)}
-              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
+              className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
             >
               <Plus className="w-4 h-4" />
               <span>Create Investment</span>
@@ -943,8 +943,8 @@ export default function JointInvestmentsPage() {
                   {userInvestments.length}
                 </p>
               </div>
-              <div className="p-3 bg-[#F7931A]/10 rounded-lg">
-                <Wallet className="w-6 h-6 text-[#F7931A]" />
+              <div className="p-3 bg-[#4c6fff]/10 rounded-lg">
+                <Wallet className="w-6 h-6 text-[#4c6fff]" />
               </div>
             </div>
           </div>
@@ -1024,7 +1024,7 @@ export default function JointInvestmentsPage() {
               onClick={() => setActiveTab("discover")}
               className={`pb-3 text-sm font-medium transition-colors relative ${
                 activeTab === "discover"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -1034,7 +1034,7 @@ export default function JointInvestmentsPage() {
               onClick={() => setActiveTab("my-investments")}
               className={`pb-3 text-sm font-medium transition-colors relative ${
                 activeTab === "my-investments"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -1049,7 +1049,7 @@ export default function JointInvestmentsPage() {
             {investments.map((investment) => (
               <div
                 key={investment.id}
-                className="bg-[#0B1C2D] rounded-2xl border border-gray-800 overflow-hidden hover:border-[#F7931A]/50 transition-colors"
+                className="bg-[#0B1C2D] rounded-2xl border border-gray-800 overflow-hidden hover:border-[#4c6fff]/50 transition-colors"
               >
                 <div className="relative h-48">
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0B1C2D] via-transparent to-transparent z-10"></div>
@@ -1090,7 +1090,7 @@ export default function JointInvestmentsPage() {
                       </div>
                       <div className="w-full bg-gray-800 rounded-full h-2">
                         <div
-                          className="bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 h-2 rounded-full"
+                          className="bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 h-2 rounded-full"
                           style={{ width: `${getProgressPercentage(investment.investedAmount, investment.totalValue)}%` }}
                         ></div>
                       </div>
@@ -1135,7 +1135,7 @@ export default function JointInvestmentsPage() {
                       <div className="flex space-x-2">
                         <button
                           onClick={() => handleCopyLink(investment.id)}
-                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-[#F7931A] hover:border-[#F7931A] transition-colors"
+                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-[#4c6fff] hover:border-[#4c6fff] transition-colors"
                           title="Copy invite link"
                         >
                           {copied === investment.id ? (
@@ -1151,7 +1151,7 @@ export default function JointInvestmentsPage() {
                             setShowJoinModal(true);
                           }}
                           disabled={investment.status !== "Open"}
-                          className="px-4 py-2 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="px-4 py-2 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           Join Now
                         </button>
@@ -1170,12 +1170,12 @@ export default function JointInvestmentsPage() {
                 return (
                   <div
                     key={investment.id}
-                    className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#F7931A]/50 transition-colors"
+                    className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#4c6fff]/50 transition-colors"
                   >
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                       <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 rounded-lg bg-[#F7931A]/20 flex items-center justify-center">
-                          <TrendingUp className="w-6 h-6 text-[#F7931A]" />
+                        <div className="w-12 h-12 rounded-lg bg-[#4c6fff]/20 flex items-center justify-center">
+                          <TrendingUp className="w-6 h-6 text-[#4c6fff]" />
                         </div>
                         <div>
                           <h3 className="text-lg font-bold text-white">{investment.investmentName}</h3>
@@ -1198,7 +1198,7 @@ export default function JointInvestmentsPage() {
                         </div>
                         <div className="text-right">
                           <p className="text-gray-400 text-sm">Shares</p>
-                          <p className="text-[#F7931A] font-bold">{investment.shares.toFixed(2)}</p>
+                          <p className="text-[#4c6fff] font-bold">{investment.shares.toFixed(2)}</p>
                         </div>
                         <div className="text-right">
                           <p className="text-gray-400 text-sm">Returns</p>
@@ -1210,7 +1210,7 @@ export default function JointInvestmentsPage() {
                             {fullInvestment ? `${fullInvestment.roi}%` : '12.5%'}
                           </p>
                         </div>
-                        <button className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors">
+                        <button className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors">
                           <ChevronRight className="w-5 h-5" />
                         </button>
                       </div>
@@ -1221,8 +1221,8 @@ export default function JointInvestmentsPage() {
             ) : (
               <div className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-12 text-center">
                 <div className="flex flex-col items-center">
-                  <div className="w-20 h-20 rounded-full bg-[#F7931A]/10 flex items-center justify-center mb-4">
-                    <Users className="w-10 h-10 text-[#F7931A]" />
+                  <div className="w-20 h-20 rounded-full bg-[#4c6fff]/10 flex items-center justify-center mb-4">
+                    <Users className="w-10 h-10 text-[#4c6fff]" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">No investments yet</h3>
                   <p className="text-gray-400 mb-6 max-w-md">
@@ -1230,7 +1230,7 @@ export default function JointInvestmentsPage() {
                   </p>
                   <button
                     onClick={() => setActiveTab("discover")}
-                    className="px-6 py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
+                    className="px-6 py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
                   >
                     Discover Investments
                   </button>

@@ -450,7 +450,7 @@ export default function AIInsightPage() {
       case "sell": return <TrendingDown className="w-5 h-5 text-red-500" />;
       case "hold": return <Clock className="w-5 h-5 text-yellow-500" />;
       case "diversify": return <PieChart className="w-5 h-5 text-blue-500" />;
-      case "rebalance": return <RefreshCw className="w-5 h-5 text-[#F7931A]" />;
+      case "rebalance": return <RefreshCw className="w-5 h-5 text-[#4c6fff]" />;
       default: return <Activity className="w-5 h-5 text-gray-500" />;
     }
   };
@@ -481,8 +481,8 @@ export default function AIInsightPage() {
       <div className="min-h-screen bg-[#0A0F1E] flex items-center justify-center">
         <div className="text-center">
           <div className="relative">
-            <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#F7931A]"></div>
-            <Brain className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 text-[#F7931A]" />
+            <div className="inline-block animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#4c6fff]"></div>
+            <Brain className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 text-[#4c6fff]" />
           </div>
           <p className="mt-4 text-gray-400">Loading AI insights...</p>
           <p className="text-xs text-gray-600 mt-2">Analyzing market data & your portfolio</p>
@@ -505,8 +505,8 @@ export default function AIInsightPage() {
               Back to Dashboard
             </Link>
             <div className="flex items-center space-x-2">
-              <div className="p-2 bg-[#F7931A]/20 rounded-lg">
-                <Brain className="w-6 h-6 text-[#F7931A]" />
+              <div className="p-2 bg-[#4c6fff]/20 rounded-lg">
+                <Brain className="w-6 h-6 text-[#4c6fff]" />
               </div>
               <h1 className="text-2xl font-bold text-white">AI Insights</h1>
             </div>
@@ -519,7 +519,7 @@ export default function AIInsightPage() {
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className="flex items-center space-x-2 px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors disabled:opacity-50"
+              className="flex items-center space-x-2 px-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors disabled:opacity-50"
             >
               <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
               <span>Refresh</span>
@@ -541,11 +541,11 @@ export default function AIInsightPage() {
         )}
 
         {/* AI Status Banner */}
-        <div className="mb-8 p-5 bg-gradient-to-r from-[#4C6FFF]/10 via-[#F7931A]/10 to-[#0EF2C2]/10 rounded-2xl border border-gray-800">
+        <div className="mb-8 p-5 bg-gradient-to-r from-[#4C6FFF]/10 via-[#4c6fff]/10 to-[#0EF2C2]/10 rounded-2xl border border-gray-800">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="flex items-start space-x-4">
-              <div className="p-3 bg-[#F7931A]/20 rounded-full animate-pulse">
-                <Bot className="w-6 h-6 text-[#F7931A]" />
+              <div className="p-3 bg-[#4c6fff]/20 rounded-full animate-pulse">
+                <Bot className="w-6 h-6 text-[#4c6fff]" />
               </div>
               <div>
                 <div className="flex items-center space-x-2">
@@ -606,7 +606,7 @@ export default function AIInsightPage() {
               onClick={() => setActiveTab("overview")}
               className={`pb-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
                 activeTab === "overview"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -619,14 +619,14 @@ export default function AIInsightPage() {
               onClick={() => setActiveTab("recommendations")}
               className={`pb-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
                 activeTab === "recommendations"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
               <div className="flex items-center space-x-2">
                 <Lightbulb className="w-4 h-4" />
                 <span>Recommendations</span>
-                <span className="px-1.5 py-0.5 bg-[#F7931A] text-white rounded-full text-xs">
+                <span className="px-1.5 py-0.5 bg-[#4c6fff] text-white rounded-full text-xs">
                   {recommendations.length}
                 </span>
               </div>
@@ -635,7 +635,7 @@ export default function AIInsightPage() {
               onClick={() => setActiveTab("predictions")}
               className={`pb-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
                 activeTab === "predictions"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -648,7 +648,7 @@ export default function AIInsightPage() {
               onClick={() => setActiveTab("signals")}
               className={`pb-3 text-sm font-medium transition-colors relative whitespace-nowrap ${
                 activeTab === "signals"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -670,7 +670,7 @@ export default function AIInsightPage() {
                 return (
                   <div
                     key={insight.id}
-                    className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#F7931A]/50 transition-colors"
+                    className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#4c6fff]/50 transition-colors"
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center space-x-3">
@@ -685,7 +685,7 @@ export default function AIInsightPage() {
                           <div className="flex items-center space-x-2">
                             <h3 className="text-white font-medium">{insight.title}</h3>
                             {insight.isNew && (
-                              <span className="px-1.5 py-0.5 bg-[#F7931A]/10 text-[#F7931A] rounded-full text-xs border border-[#F7931A]/20">
+                              <span className="px-1.5 py-0.5 bg-[#4c6fff]/10 text-[#4c6fff] rounded-full text-xs border border-[#4c6fff]/20">
                                 New
                               </span>
                             )}
@@ -726,7 +726,7 @@ export default function AIInsightPage() {
                     
                     <div className="mt-3 pt-3 border-t border-gray-800 flex items-center justify-between">
                       <span className="text-xs text-gray-600">Source: {insight.source}</span>
-                      <button className="text-xs text-[#F7931A] hover:text-[#F7931A]/80 flex items-center">
+                      <button className="text-xs text-[#4c6fff] hover:text-[#4c6fff]/80 flex items-center">
                         View Analysis
                         <ChevronRight className="w-3 h-3 ml-1" />
                       </button>
@@ -758,7 +758,7 @@ export default function AIInsightPage() {
             {recommendations.map((rec) => (
               <div
                 key={rec.id}
-                className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#F7931A]/50 transition-colors"
+                className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#4c6fff]/50 transition-colors"
               >
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                   <div className="flex items-start space-x-4">
@@ -771,7 +771,7 @@ export default function AIInsightPage() {
                         <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${getRiskColor(rec.riskLevel)}`}>
                           {rec.riskLevel} Risk
                         </span>
-                        <span className="px-2 py-0.5 bg-[#F7931A]/10 text-[#F7931A] rounded-full text-xs border border-[#F7931A]/20">
+                        <span className="px-2 py-0.5 bg-[#4c6fff]/10 text-[#4c6fff] rounded-full text-xs border border-[#4c6fff]/20">
                           {rec.confidence}% AI Confidence
                         </span>
                       </div>
@@ -787,7 +787,7 @@ export default function AIInsightPage() {
                       {/* Expandable Reasoning */}
                       <button
                         onClick={() => setExpandedRecommendation(expandedRecommendation === rec.id ? null : rec.id)}
-                        className="flex items-center text-xs text-[#F7931A] hover:text-[#F7931A]/80 mt-3"
+                        className="flex items-center text-xs text-[#4c6fff] hover:text-[#4c6fff]/80 mt-3"
                       >
                         {expandedRecommendation === rec.id ? (
                           <>Hide reasoning <ChevronUp className="w-3 h-3 ml-1" /></>
@@ -799,13 +799,13 @@ export default function AIInsightPage() {
                       {expandedRecommendation === rec.id && (
                         <div className="mt-3 p-3 bg-[#0F2438] rounded-lg border border-gray-800">
                           <h4 className="text-white text-xs font-medium mb-2 flex items-center">
-                            <Brain className="w-3 h-3 mr-1 text-[#F7931A]" />
+                            <Brain className="w-3 h-3 mr-1 text-[#4c6fff]" />
                             AI Reasoning
                           </h4>
                           <ul className="space-y-1">
                             {rec.reasoning.map((reason, idx) => (
                               <li key={idx} className="text-xs text-gray-400 flex items-start">
-                                <span className="text-[#F7931A] mr-2">•</span>
+                                <span className="text-[#4c6fff] mr-2">•</span>
                                 {reason}
                               </li>
                             ))}
@@ -816,13 +816,13 @@ export default function AIInsightPage() {
                   </div>
                   
                   <div className="flex items-center space-x-2">
-                    <button className="px-4 py-2 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap">
+                    <button className="px-4 py-2 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity whitespace-nowrap">
                       {rec.type === 'buy' ? 'Buy' : 
                        rec.type === 'sell' ? 'Sell' : 
                        rec.type === 'rebalance' ? 'Rebalance' : 
                        rec.type === 'diversify' ? 'Diversify' : 'Hold'}
                     </button>
-                    <button className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors">
+                    <button className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors">
                       <Info className="w-4 h-4" />
                     </button>
                   </div>
@@ -857,7 +857,7 @@ export default function AIInsightPage() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="flex items-center">
-                    <div className="w-3 h-3 bg-[#F7931A] rounded-full mr-2"></div>
+                    <div className="w-3 h-3 bg-[#4c6fff] rounded-full mr-2"></div>
                     <span className="text-xs text-gray-400">Actual</span>
                   </div>
                   <div className="flex items-center">
@@ -906,7 +906,7 @@ export default function AIInsightPage() {
                       {/* Actual Bar (if exists) */}
                       {item.actual && (
                         <div 
-                          className="absolute bottom-0 w-1/2 bg-[#F7931A] rounded-t-lg z-20"
+                          className="absolute bottom-0 w-1/2 bg-[#4c6fff] rounded-t-lg z-20"
                           style={{ 
                             height: `${((item.actual - 220000) / 150000) * 100}%`,
                             maxHeight: '160px',

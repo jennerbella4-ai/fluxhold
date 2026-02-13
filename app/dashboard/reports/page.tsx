@@ -132,7 +132,7 @@ export default function ReportsPage() {
 
   // Asset allocation data
   const [assetAllocation, setAssetAllocation] = useState<AssetAllocation[]>([
-    { category: "Stocks", value: 124500, percentage: 43.7, color: "#F7931A" },
+    { category: "Stocks", value: 124500, percentage: 43.7, color: "#4c6fff" },
     { category: "Bonds", value: 56800, percentage: 20.0, color: "#4C6FFF" },
     { category: "Real Estate", value: 48500, percentage: 17.0, color: "#0EF2C2" },
     { category: "Crypto", value: 35200, percentage: 12.4, color: "#8B5CF6" },
@@ -250,7 +250,7 @@ export default function ReportsPage() {
       icon: BarChart3,
       type: "performance",
       popular: true,
-      color: "#F7931A"
+      color: "#4c6fff"
     },
     {
       id: "2",
@@ -488,7 +488,7 @@ export default function ReportsPage() {
       case "performance": return "text-[#0EF2C2] bg-[#0EF2C2]/10 border-[#0EF2C2]/20";
       case "transaction": return "text-[#8B5CF6] bg-[#8B5CF6]/10 border-[#8B5CF6]/20";
       case "investment": return "text-[#10B981] bg-[#10B981]/10 border-[#10B981]/20";
-      case "dividend": return "text-[#F7931A] bg-[#F7931A]/10 border-[#F7931A]/20";
+      case "dividend": return "text-[#4c6fff] bg-[#4c6fff]/10 border-[#4c6fff]/20";
       case "capital-gains": return "text-[#EF4444] bg-[#EF4444]/10 border-[#EF4444]/20";
       default: return "text-gray-400 bg-gray-800 border-gray-700";
     }
@@ -572,7 +572,7 @@ export default function ReportsPage() {
                   handleDownloadReport(report);
                   onClose();
                 }}
-                className="flex-1 py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center"
+                className="flex-1 py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white font-medium rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center"
               >
                 <Download className="w-4 h-4 mr-2" />
                 Download Report
@@ -620,13 +620,13 @@ export default function ReportsPage() {
           <div className="flex items-center space-x-3">
             <button
               onClick={() => setShowFilters(!showFilters)}
-              className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors"
+              className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors"
             >
               <Filter className="w-5 h-5" />
             </button>
             <button
               onClick={() => window.print()}
-              className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors"
+              className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors"
             >
               <Printer className="w-5 h-5" />
             </button>
@@ -681,8 +681,8 @@ export default function ReportsPage() {
                   <span className="text-xs text-gray-500 ml-2">Today</span>
                 </div>
               </div>
-              <div className="p-3 bg-[#F7931A]/10 rounded-lg">
-                <Wallet className="w-6 h-6 text-[#F7931A]" />
+              <div className="p-3 bg-[#4c6fff]/10 rounded-lg">
+                <Wallet className="w-6 h-6 text-[#4c6fff]" />
               </div>
             </div>
           </div>
@@ -750,7 +750,7 @@ export default function ReportsPage() {
               onClick={() => setActiveTab("reports")}
               className={`pb-3 text-sm font-medium transition-colors relative ${
                 activeTab === "reports"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -760,7 +760,7 @@ export default function ReportsPage() {
               onClick={() => setActiveTab("templates")}
               className={`pb-3 text-sm font-medium transition-colors relative ${
                 activeTab === "templates"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -770,7 +770,7 @@ export default function ReportsPage() {
               onClick={() => setActiveTab("scheduled")}
               className={`pb-3 text-sm font-medium transition-colors relative ${
                 activeTab === "scheduled"
-                  ? "text-[#F7931A] border-b-2 border-[#F7931A]"
+                  ? "text-[#4c6fff] border-b-2 border-[#4c6fff]"
                   : "text-gray-400 hover:text-white"
               }`}
             >
@@ -790,7 +790,7 @@ export default function ReportsPage() {
                   setSelectedType("all");
                   setSearchTerm("");
                 }}
-                className="text-sm text-[#F7931A] hover:text-[#F7931A]/80"
+                className="text-sm text-[#4c6fff] hover:text-[#4c6fff]/80"
               >
                 Clear Filters
               </button>
@@ -802,7 +802,7 @@ export default function ReportsPage() {
                 <select
                   value={selectedPeriod}
                   onChange={(e) => setSelectedPeriod(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                 >
                   <option value="all">All Periods</option>
                   <option value="daily">Daily</option>
@@ -818,7 +818,7 @@ export default function ReportsPage() {
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
-                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#F7931A] transition-colors"
+                  className="w-full px-3 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white focus:outline-none focus:border-[#4c6fff] transition-colors"
                 >
                   <option value="all">All Types</option>
                   <option value="portfolio">Portfolio</option>
@@ -840,7 +840,7 @@ export default function ReportsPage() {
                     placeholder="Search reports..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#F7931A] transition-colors"
+                    className="w-full pl-10 pr-4 py-2 bg-[#0F2438] border border-gray-800 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#4c6fff] transition-colors"
                   />
                 </div>
               </div>
@@ -860,7 +860,7 @@ export default function ReportsPage() {
                 return (
                   <div
                     key={report.id}
-                    className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#F7931A]/50 transition-colors cursor-pointer"
+                    className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#4c6fff]/50 transition-colors cursor-pointer"
                     onClick={() => {
                       setSelectedReport(report);
                       setShowReportModal(true);
@@ -875,7 +875,7 @@ export default function ReportsPage() {
                           <div className="flex items-center space-x-3">
                             <h3 className="text-lg font-bold text-white">{report.title}</h3>
                             {report.isNew && (
-                              <span className="px-2 py-0.5 bg-[#F7931A]/10 text-[#F7931A] rounded-full text-xs font-medium border border-[#F7931A]/20">
+                              <span className="px-2 py-0.5 bg-[#4c6fff]/10 text-[#4c6fff] rounded-full text-xs font-medium border border-[#4c6fff]/20">
                                 New
                               </span>
                             )}
@@ -905,7 +905,7 @@ export default function ReportsPage() {
                             e.stopPropagation();
                             handleDownloadReport(report);
                           }}
-                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors"
+                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors"
                           title="Download"
                         >
                           <Download className="w-4 h-4" />
@@ -916,7 +916,7 @@ export default function ReportsPage() {
                             setSelectedReport(report);
                             setShowReportModal(true);
                           }}
-                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors"
+                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors"
                           title="View Details"
                         >
                           <Eye className="w-4 h-4" />
@@ -926,7 +926,7 @@ export default function ReportsPage() {
                             e.stopPropagation();
                             // Share functionality
                           }}
-                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors"
+                          className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors"
                           title="Share"
                         >
                           <Share2 className="w-4 h-4" />
@@ -939,8 +939,8 @@ export default function ReportsPage() {
             ) : (
               <div className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-12 text-center">
                 <div className="flex flex-col items-center">
-                  <div className="w-20 h-20 rounded-full bg-[#F7931A]/10 flex items-center justify-center mb-4">
-                    <FileText className="w-10 h-10 text-[#F7931A]" />
+                  <div className="w-20 h-20 rounded-full bg-[#4c6fff]/10 flex items-center justify-center mb-4">
+                    <FileText className="w-10 h-10 text-[#4c6fff]" />
                   </div>
                   <h3 className="text-xl font-bold text-white mb-2">No reports found</h3>
                   <p className="text-gray-400 mb-6 max-w-md">
@@ -948,7 +948,7 @@ export default function ReportsPage() {
                   </p>
                   <button
                     onClick={() => setActiveTab("templates")}
-                    className="px-6 py-3 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
+                    className="px-6 py-3 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white rounded-lg hover:opacity-90 transition-opacity"
                   >
                     Browse Templates
                   </button>
@@ -966,14 +966,14 @@ export default function ReportsPage() {
               return (
                 <div
                   key={template.id}
-                  className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#F7931A]/50 transition-colors"
+                  className="bg-[#0B1C2D] rounded-xl border border-gray-800 p-6 hover:border-[#4c6fff]/50 transition-colors"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className={`p-3 rounded-lg`} style={{ backgroundColor: `${template.color}10` }}>
                       <Icon className="w-6 h-6" style={{ color: template.color }} />
                     </div>
                     {template.popular && (
-                      <span className="px-2 py-1 bg-[#F7931A]/10 text-[#F7931A] rounded-full text-xs font-medium flex items-center">
+                      <span className="px-2 py-1 bg-[#4c6fff]/10 text-[#4c6fff] rounded-full text-xs font-medium flex items-center">
                         <Sparkles className="w-3 h-3 mr-1" />
                         Popular
                       </span>
@@ -988,7 +988,7 @@ export default function ReportsPage() {
                     <button
                       onClick={() => handleGenerateReport(template)}
                       disabled={isGenerating}
-                      className="px-4 py-2 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
+                      className="px-4 py-2 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center"
                     >
                       {isGenerating ? (
                         <>
@@ -1016,7 +1016,7 @@ export default function ReportsPage() {
                 <h3 className="text-lg font-bold text-white">Scheduled Reports</h3>
                 <button
                   onClick={handleScheduleReport}
-                  className="px-4 py-2 bg-gradient-to-r from-[#F7931A] to-[#F7931A]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
+                  className="px-4 py-2 bg-gradient-to-r from-[#4c6fff] to-[#4c6fff]/80 text-white text-sm font-medium rounded-lg hover:opacity-90 transition-opacity"
                 >
                   Schedule New Report
                 </button>
@@ -1030,8 +1030,8 @@ export default function ReportsPage() {
                       className="flex items-center justify-between p-4 bg-[#0F2438] rounded-lg border border-gray-800"
                     >
                       <div className="flex items-center space-x-4">
-                        <div className="p-2 bg-[#F7931A]/10 rounded-lg">
-                          <Clock className="w-5 h-5 text-[#F7931A]" />
+                        <div className="p-2 bg-[#4c6fff]/10 rounded-lg">
+                          <Clock className="w-5 h-5 text-[#4c6fff]" />
                         </div>
                         <div>
                           <h4 className="text-white font-medium">{schedule.name}</h4>
@@ -1053,7 +1053,7 @@ export default function ReportsPage() {
                         }`}>
                           {schedule.active ? 'Active' : 'Paused'}
                         </span>
-                        <button className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#F7931A] transition-colors">
+                        <button className="p-2 bg-[#0F2438] border border-gray-800 rounded-lg text-gray-400 hover:text-white hover:border-[#4c6fff] transition-colors">
                           <Eye className="w-4 h-4" />
                         </button>
                       </div>
