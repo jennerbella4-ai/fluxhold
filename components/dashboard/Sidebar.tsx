@@ -60,7 +60,6 @@ export default function Sidebar({
           return
         }
 
-        // Try to fetch profile
         const { data: profile, error } = await supabase
           .from('profiles')
           .select('full_name, avatar_url')
@@ -97,7 +96,10 @@ export default function Sidebar({
   }
 
   const handleLinkClick = () => {
-    if (isMobile && onMobileClose) onMobileClose()
+    // Close sidebar on mobile when a link is clicked
+    if (isMobile && onMobileClose) {
+      onMobileClose()
+    }
   }
 
   const getSidebarWidth = () => {
@@ -107,6 +109,17 @@ export default function Sidebar({
   }
 
   const showText = isOpen || isHovered || isMobile
+
+  // Function to check if a link is active
+  const isLinkActive = (href: string) => {
+    // Exact match for dashboard
+    if (href === '/dashboard') {
+      return pathname === '/dashboard'
+    }
+    // For other pages, check if the pathname starts with the href
+    // But ensure we don't match dashboard when on deposit
+    return pathname?.startsWith(href) && href !== '/dashboard'
+  }
 
   const navigation = [
     {
@@ -157,7 +170,11 @@ export default function Sidebar({
     >
       {/* Logo Section */}
       <div className="flex h-20 shrink-0 items-center justify-between px-4 border-b border-[#4C6FFF]/20">
-        <Link href="/dashboard" onClick={handleLinkClick} className="flex items-center space-x-3 group">
+        <Link 
+          href="/dashboard" 
+          onClick={handleLinkClick} 
+          className="flex items-center space-x-3 group"
+        >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2] flex items-center justify-center shadow-lg shadow-[#4C6FFF]/20 group-hover:scale-105 transition-transform">
             <span className="text-lg font-bold text-white">F</span>
           </div>
@@ -201,7 +218,7 @@ export default function Sidebar({
             )}
             <div className="space-y-1">
               {section.items.map((item) => {
-                const isActive = pathname === item.href || pathname?.startsWith(item.href + '/')
+                const isActive = isLinkActive(item.href)
                 return (
                   <Link
                     key={item.name}
@@ -217,10 +234,10 @@ export default function Sidebar({
                     `}
                     title={!showText ? item.name : undefined}
                   >
-                    <item.icon className={`h-5 w-5 ${isActive ? 'text-[#0EF2C2]' : ''}`} />
-                    {showText && <span className="ml-3 text-sm font-medium">{item.name}</span>}
+                    <item.icon className={`h-5 w-5 flex-shrink-0 ${isActive ? 'text-[#0EF2C2]' : ''}`} />
+                    {showText && <span className="ml-3 text-sm font-medium truncate">{item.name}</span>}
                     
-                    {/* Active Indicator */}
+                    {/* Active Indicator - Only show when collapsed */}
                     {isActive && !showText && (
                       <span className="absolute left-0 w-1 h-8 bg-gradient-to-b from-[#4C6FFF] to-[#0EF2C2] rounded-r-full" />
                     )}
@@ -237,7 +254,7 @@ export default function Sidebar({
         <div className={`flex items-center ${showText ? 'justify-between' : 'justify-center'}`}>
           <div className="flex items-center min-w-0">
             {/* Avatar */}
-            <div className="relative">
+            <div className="relative flex-shrink-0">
               <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#0EF2C2] flex items-center justify-center bg-gradient-to-br from-[#4C6FFF] to-[#0EF2C2] text-white font-bold shadow-lg">
                 {isLoading ? (
                   <div className="animate-pulse bg-gray-600 w-full h-full" />
@@ -260,7 +277,7 @@ export default function Sidebar({
             
             {/* User Info */}
             {showText && (
-              <div className="ml-3 min-w-0">
+              <div className="ml-3 min-w-0 flex-1">
                 <p className="text-sm font-semibold text-white truncate">
                   {getDisplayName()}
                 </p>
@@ -277,7 +294,7 @@ export default function Sidebar({
           {showText && (
             <button 
               onClick={() => setShowLogoutConfirm(true)} 
-              className="p-2 rounded-lg hover:bg-[#4C6FFF]/10 text-gray-400 hover:text-red-500 transition-colors"
+              className="p-2 rounded-lg hover:bg-[#4C6FFF]/10 text-gray-400 hover:text-red-500 transition-colors flex-shrink-0"
               title="Logout"
             >
               <ArrowRightOnRectangleIcon className="h-5 w-5" />
